@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ParamListWidget</class>
+ <widget class="QGroupBox" name="ParamListWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>263</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>263</width>
+    <height>16777215</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>GroupBox</string>
+  </property>
+  <property name="title">
+   <string>param control</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_canShuLieBiao"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

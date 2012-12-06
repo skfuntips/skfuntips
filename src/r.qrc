@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>PinYinDB.txt</file>
+        <file>KeywordsDB.txt</file>
+        <file>ChangJianDB.txt</file>
+        <file>HighlightDB.txt</file>
+        <file>tubiao.ico</file>
+    </qresource>
+</RCC>

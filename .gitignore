@@ -1,0 +1,8 @@
+build
+.clang_complete
+CMakeLists.txt.user.*
+px.rar
+CMakeLists.txt.user
+qtcreater-build
+freeze/
+.CMakeLists.txt.swp

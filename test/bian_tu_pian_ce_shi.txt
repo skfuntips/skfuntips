@@ -1,0 +1,29 @@
+我们以为苹果产品已经非Retina屏幕不用，因为自从 iPhone 4 和第四代 iPod
+touch首次使用了Retina之后，随后的 iPhone 4S、iPad 3、iPhone 5 以及第五代 iPod
+touch 也都用上了Retina屏幕。谁曾想，苹果最新发布的iPad
+mini却掉队一大截，用回了非Retina屏幕。
+
+苹果做出这个选择一定有他们的原因，无论从重量、厚度，还是从价格方面来考虑，iPad
+mini都不适合配备Retina屏幕。
+
+消费者对iPad
+mini是否配备Retina的观点不一：有人认为，没有Retina屏幕免谈；有人认为只要屏幕够清晰，不一定需要Retina；有些人很想要Retina，却无奈还在用着非Retina屏幕的设备。
+
+还有一类消费者是这种情况，从接触苹果以来都在用Retina屏幕的设备，如今要他们看iPad
+mini的屏幕，对他们来说是对眼睛的折磨。也有一部分特殊的用户，他们从没用过Retina屏幕的设备，一直以来都在用iPad
+2，所以在他们眼中，iPad mini的屏幕已经算是一大进步。
+
+因为出发点不同，每一位用户都有自己的观点。只有屏幕像素密度不会有偏颇，真真切切的数据一经对比就能说明哪块屏幕更清晰了。但是这些数据在消费者的脑海里并不形象，不知道实际画面对比起来是怎样的概念呢？
+
+首先上数据。iPad 2、iPad mini、iPad 4、iPhone 5 的屏幕像素密度分别是：132 ppi
+vs. 163 ppi vs. 264 ppi vs. 326 ppi。这些数据转换成实际图像会怎样？
+
+[多图]四款iOS设备体现出的屏幕效果对比
+
+iPad 2 vs. iPad mini vs. iPad 4 vs. iPhone 5 
+
+很明显，iPad 2 像素最大，肉眼都能看得到。iPhone 5
+的像素最细腻，几乎辨别不出来。iPad mini 比 iPad 2 的好一些，iPad 4 的又不如
+iPhone 5。
+
+打开一些网页试试，同样是顺序：iPad 2 vs. iPad mini vs. iPad 4 vs. iPhone 5。
