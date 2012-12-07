@@ -29,7 +29,11 @@ void KeywordsDB::externalFileChanged(){
 
     pattern_[ALL]=pattern_[INTERNAL];
 
-    if(!pattern_[ALL].isEmpty() && !pattern_[EXTERNAL].isEmpty()){
+    if(pattern_[ALL].isEmpty()){
+
+        pattern_[ALL]=pattern_[EXTERNAL];
+
+   }else if(!pattern_[EXTERNAL].isEmpty()){
 
         pattern_[ALL].append('|').append(pattern_[EXTERNAL]);
 
@@ -38,7 +42,7 @@ void KeywordsDB::externalFileChanged(){
    regexp_[EXTERNAL].setPattern(pattern_[EXTERNAL]);
    regexp_[ALL].setPattern(pattern_[ALL]);
 
-   emit chongZhi();
+   emit reset();
 
 }
 

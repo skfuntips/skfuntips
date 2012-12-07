@@ -45,5 +45,5 @@ void HighlightDB::externalFileChanged(){
     regexpList_[ALL]=regexpList_[INTERNAL];
     regexpList_[ALL]<<regexpList_[EXTERNAL];
 
-    emit chongZhi();
+    emit reset();
 }

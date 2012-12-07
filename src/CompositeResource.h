@@ -26,7 +26,7 @@ public:
 
     void setType(Type leiXing){
         type_=leiXing;
-        emit chongZhi();
+        emit reset();
     }
 
     Type type()const{
@@ -39,7 +39,7 @@ public:
 
 signals:
 
-    void chongZhi();
+    void reset();
 
 protected slots:
 
