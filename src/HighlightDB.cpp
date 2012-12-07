@@ -31,7 +31,7 @@ void HighlightDB::processFile(Type chuLiLeiXing) {
     Q_ASSERT(chuLiLeiXing<2);
     regexpList_[chuLiLeiXing].clear();
 
-    hangChuLi(type(chuLiLeiXing),boost::bind(tianJiaBiaoDaShi,_1,
+    hangChuLi(content(chuLiLeiXing),boost::bind(tianJiaBiaoDaShi,_1,
                                              boost::ref(regexpList_[chuLiLeiXing])));
 
 }

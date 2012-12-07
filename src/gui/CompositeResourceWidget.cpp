@@ -33,9 +33,9 @@ CompositeResourceWidget::CompositeResourceWidget(CompositeResource* ziYuan,QWidg
 
 void CompositeResourceWidget::zaiRuWenJian(){
 
-    QString neiRong=heBingDuoHang(ziYuan_->type(CompositeResource::EXTERNAL));
+    ui_->plainTextEdit_waiZhi->clear();
 
-    ui_->plainTextEdit_waiZhi->setPlainText(neiRong);
+    tianChong(ui_->plainTextEdit_waiZhi->document(),ziYuan_->content(CompositeResource::EXTERNAL));
 
 }
 

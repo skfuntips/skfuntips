@@ -22,7 +22,7 @@ void KeywordsDB::externalFileChanged(){
     CompositeResource::externalFileChanged();
 
     pattern_[EXTERNAL].clear();
-    hangChuLi(type(EXTERNAL),
+    hangChuLi(content(EXTERNAL),
               boost::bind(zuHeBiaoDaShi,_1,boost::ref(pattern_[EXTERNAL])));
     pattern_[EXTERNAL].resize(qMax((pattern_[EXTERNAL].size()-1),0));
 
@@ -56,7 +56,7 @@ KeywordsDB::KeywordsDB():
     }
 
 
-     hangChuLi(type(INTERNAL),
+     hangChuLi(content(INTERNAL),
                boost::bind(zuHeBiaoDaShi,_1,boost::ref(pattern_[INTERNAL])));
 
      pattern_[INTERNAL].resize(qMax((pattern_[INTERNAL].size()-1),0));

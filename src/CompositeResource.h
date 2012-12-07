@@ -18,7 +18,7 @@ public:
 
     virtual ~CompositeResource(){}
 
-    const QStringList& type(Type leiXing)const{
+    const QStringList& content(Type leiXing)const{
         return contents_[leiXing];
     }
 
