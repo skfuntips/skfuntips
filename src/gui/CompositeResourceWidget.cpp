@@ -26,12 +26,12 @@ CompositeResourceWidget::CompositeResourceWidget(CompositeResource* ziYuan,QWidg
 
     connect(ui_->radioButton_waiZhi,SIGNAL(toggled(bool)),this,SLOT(togglePart()));
 
-    zaiRuWenJian();
+    loadFile();
 
 }
 
 
-void CompositeResourceWidget::zaiRuWenJian(){
+void CompositeResourceWidget::loadFile(){
 
     ui_->plainTextEdit_waiZhi->clear();
 
@@ -61,7 +61,7 @@ void CompositeResourceWidget::saveFile(){
 }
 
 void CompositeResourceWidget::showEvent(QShowEvent *e){
-    zaiRuWenJian();
+    loadFile();
     QDialog::showEvent(e);
 }
 

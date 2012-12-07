@@ -42,7 +42,7 @@ private:
 
     CompositeResource * ziYuan_;
 
-    void zaiRuWenJian();
+    void loadFile();
 
 };
 
