@@ -37,7 +37,7 @@ add_library(isp
      )
 
 
-target_link_libraries(isp ${GIF_LIBRARY} encdet ${QT_LIBRARIES})
+target_link_libraries(isp giflib encdet ${QT_LIBRARIES})
 	 
 add_subdirectory(cli)
 add_subdirectory(gui)

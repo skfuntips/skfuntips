@@ -6,7 +6,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
 
 
 find_package(Qt4 REQUIRED)
-find_package(GIF REQUIRED)
 find_package(Boost REQUIRED)
 
 set(CMAKE_AUTOMOC ON)
@@ -14,7 +13,7 @@ set(CMAKE_AUTOMOC ON)
 include(${QT_USE_FILE})
 
 
-include_directories( ${QT_INCLUDES})
+include_directories( ${QT_INCLUDES} giflib)
 include_directories(
     ${Boost_INCLUDE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/src
@@ -29,7 +28,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set (FILES_TO_TRANSLATE )
 
 
-
+add_subdirectory(giflib)
 add_subdirectory(encdet)
 add_subdirectory(src)
 add_subdirectory(util)

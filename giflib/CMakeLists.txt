@@ -1,0 +1,9 @@
+add_library(giflib
+egif_lib.c
+dgif_lib.c
+gif_err.c
+gif_font.c
+gif_hash.c
+gifalloc.c
+quantize.c
+)
