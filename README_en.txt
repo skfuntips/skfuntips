@@ -98,4 +98,7 @@ every regexp(per line) will be used for text result highlight
 this function can warn you that you don't want some words in result text
 
 
-TODO: port to android (based on necessitas) is welcome
+TODO: 
+port to android (based on necessitas) is welcome
+cmake install script
+add license
