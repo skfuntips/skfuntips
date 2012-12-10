@@ -28,7 +28,7 @@ class ToImageProcessor:public IProcessor{
 
         void sheZhiZiTi(const QFont& ziTiSheZhi);
 
-        virtual ResultType resultLeiXing()const{
+        virtual ResultType resultType()const{
             return IMAGE;
         }
 

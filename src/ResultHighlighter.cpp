@@ -5,9 +5,9 @@
 ResultHighlighter::ResultHighlighter(QObject *fuDuiXiang)
     :QSyntaxHighlighter(fuDuiXiang){
 
-    connect(&KeywordsDB::instance(),SIGNAL(chongZhi()),this,SLOT(rehighlight()));
+    connect(&KeywordsDB::instance(),SIGNAL(reset()),this,SLOT(rehighlight()));
 
-    connect(&HighlightDB::instance(),SIGNAL(chongZhi()),this,SLOT(rehighlight()));
+    connect(&HighlightDB::instance(),SIGNAL(reset()),this,SLOT(rehighlight()));
 
 }
 

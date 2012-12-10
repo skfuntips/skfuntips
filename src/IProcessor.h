@@ -29,7 +29,7 @@ class IProcessor :public QObject{
 
         virtual ParamList paramList()=0;
 
-        virtual ResultType resultLeiXing()const=0;
+        virtual ResultType resultType()const=0;
 
         virtual ~IProcessor(){}
 

@@ -90,21 +90,21 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
-        <widget class="QPushButton" name="pushButton_baoCunWenJian">
+        <widget class="QPushButton" name="pushButton_saveToFile">
          <property name="text">
           <string>save</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_baoCunDaoJianQieBan">
+        <widget class="QPushButton" name="pushButton_saveToClipboard">
          <property name="text">
           <string>copy to clipboard</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_qingKong">
+        <widget class="QPushButton" name="pushButton_clear">
          <property name="text">
           <string>clear</string>
          </property>
@@ -132,7 +132,7 @@
  <resources/>
  <connections>
   <connection>
-   <sender>pushButton_qingKong</sender>
+   <sender>pushButton_clear</sender>
    <signal>clicked()</signal>
    <receiver>plainTextEdit_ziFuChuanResult</receiver>
    <slot>clear()</slot>

@@ -17,7 +17,7 @@ public:
 
     virtual Result process(const QStringList& ziFuChuan);
 
-    virtual ResultType resultLeiXing()const{
+    virtual ResultType resultType()const{
         return STRING;
     }
 

@@ -40,7 +40,7 @@ ParamListWidget::ParamListWidget(QWidget *parent)
 
 ParamListWidget::~ParamListWidget(){}
 
-void ParamListWidget::canShuLieBiaoGaiBian(ParamList xinLieBiao){
+void ParamListWidget::paramListChanged(ParamList xinLieBiao){
 
     qDeleteAll(ParamWidgetLieBiao_);
     ParamWidgetLieBiao_.clear();

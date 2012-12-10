@@ -19,16 +19,16 @@ class ResultWidget:public  QGroupBox {
      public:
 	  ResultWidget(QWidget* parent=0);
 
-	  void sheZhiResult(const Result& ResultSheZhi);
+      void setResult(const Result& ResultSheZhi);
 
-      QString kongJianWenBen();
+      QString contents();
 
       virtual ~ResultWidget();
 
      private slots:
 
-	  void on_pushButton_baoCunWenJian_clicked();
-     	  void on_pushButton_baoCunDaoJianQieBan_clicked();
+      void on_pushButton_saveToFile_clicked();
+          void on_pushButton_saveToClipboard_clicked();
 
      private:
 

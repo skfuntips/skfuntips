@@ -32,11 +32,11 @@ private slots:
 
     void executeProcess();
 
-    void on_action_guanYu_triggered();
+    void on_action_about_triggered();
 
-    void on_action_bangZhu_triggered();
+    void on_action_help_triggered();
 
-    void on_pushButton_zaiCi_clicked();
+    void on_pushButton_again_clicked();
 
     void processFinished();
 

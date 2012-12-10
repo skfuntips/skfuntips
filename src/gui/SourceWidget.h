@@ -18,13 +18,13 @@ public:
 
     virtual ~SourceWidget ();
 
-    QStringList neiRong();
+    QStringList contents();
 
-    void sheZhiWenBen(const QString& wenBen);
+    void setContents(const QString& wenBen);
 
 signals:
 
-    void neiRongBianHua();
+    void contentsChanged();
 
 protected:
 

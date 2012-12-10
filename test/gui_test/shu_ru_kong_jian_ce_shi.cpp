@@ -14,7 +14,7 @@ int main(int argc, char * argv[])
 
 
     QObject::connect(
-            &kongJian,SIGNAL(neiRongBianHua()),
+            &kongJian,SIGNAL(contentsChanged()),
             &tiShi,SLOT(show()));
 
     kongJian.show();

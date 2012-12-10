@@ -25,7 +25,7 @@ public:
 
     virtual ~ToGifProcessor(){}
 
-    virtual ResultType resultLeiXing()const{
+    virtual ResultType resultType()const{
         return GIF_ANIMATION;
     }
 

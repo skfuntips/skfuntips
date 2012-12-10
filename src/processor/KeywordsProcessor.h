@@ -30,7 +30,7 @@ class KeywordsProcessor :public LevelProcessor{
     }
 
 
-    virtual ResultType resultLeiXing()const{
+    virtual ResultType resultType()const{
         return STRING;
     }
 

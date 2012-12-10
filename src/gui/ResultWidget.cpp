@@ -25,15 +25,15 @@ ResultWidget::ResultWidget(QWidget* parent):
 
      gaoLiangQi->setDocument(ui_->plainTextEdit_ziFuChuanResult->document());
 
-     sheZhiResult(Result());
+     setResult(Result());
 }
 
-void ResultWidget::on_pushButton_baoCunDaoJianQieBan_clicked(){
+void ResultWidget::on_pushButton_saveToClipboard_clicked(){
 
      Result_.saveClipboard();
 }
 
-void ResultWidget::on_pushButton_baoCunWenJian_clicked(){
+void ResultWidget::on_pushButton_saveToFile_clicked(){
      QString wenJianLeiXing;
      if (Result_.type()==STRING) {
       wenJianLeiXing="*.txt";
@@ -53,7 +53,7 @@ void ResultWidget::on_pushButton_baoCunWenJian_clicked(){
 }
 
 
-void ResultWidget::sheZhiResult(const Result& ResultSheZhi){
+void ResultWidget::setResult(const Result& ResultSheZhi){
      Result_=ResultSheZhi;
 
      bool jianQieBan=false;
@@ -93,13 +93,13 @@ void ResultWidget::sheZhiResult(const Result& ResultSheZhi){
      }
      }
 
-     ui_->pushButton_baoCunDaoJianQieBan->setEnabled(jianQieBan);
-     ui_->pushButton_qingKong->setEnabled(qingKong);
+     ui_->pushButton_saveToClipboard->setEnabled(jianQieBan);
+     ui_->pushButton_clear->setEnabled(qingKong);
 
 }
 
 
-QString ResultWidget::kongJianWenBen(){
+QString ResultWidget::contents(){
 
     return heBingDuoHang(::kongJianWenBen(ui_->plainTextEdit_ziFuChuanResult->document()));
 }

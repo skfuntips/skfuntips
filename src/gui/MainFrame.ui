@@ -37,57 +37,73 @@
          </spacer>
         </item>
         <item>
-         <layout class="QHBoxLayout" name="horizontalLayout">
-          <item>
-           <widget class="QPushButton" name="pushButton_guanJianCiKu">
-            <property name="text">
-             <string>keywords config</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="pushButton_gaoLiangCiKu">
-            <property name="text">
-             <string>highlights config</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="checkBox_tuiGuang">
-            <property name="text">
-             <string>add share text</string>
-            </property>
-            <property name="checked">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pushButton_zaiCi">
+         <widget class="QWidget" name="widget" native="true">
           <property name="maximumSize">
            <size>
             <width>263</width>
             <height>16777215</height>
            </size>
           </property>
-          <property name="text">
-           <string>copy current result to source</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QProgressBar" name="progressBar">
-          <property name="maximumSize">
-           <size>
-            <width>263</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="value">
-           <number>0</number>
-          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_3">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_3">
+             <item>
+              <widget class="QProgressBar" name="progressBar">
+               <property name="maximumSize">
+                <size>
+                 <width>263</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="value">
+                <number>0</number>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="checkBox_tuiGuang">
+               <property name="text">
+                <string>add share text</string>
+               </property>
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <item>
+              <widget class="QPushButton" name="pushButton_guanJianCiKu">
+               <property name="text">
+                <string>keywords config</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_gaoLiangCiKu">
+               <property name="text">
+                <string>highlights config</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_again">
+             <property name="maximumSize">
+              <size>
+               <width>263</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>copy current result to source</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </widget>
         </item>
        </layout>
@@ -102,21 +118,21 @@
      <x>0</x>
      <y>0</y>
      <width>622</width>
-     <height>26</height>
+     <height>17</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
     <property name="title">
      <string>&amp;File</string>
     </property>
-    <addaction name="action_tuiChu"/>
+    <addaction name="action_quit"/>
    </widget>
    <widget class="QMenu" name="menu_2">
     <property name="title">
      <string>&amp;Help</string>
     </property>
-    <addaction name="action_bangZhu"/>
-    <addaction name="action_guanYu"/>
+    <addaction name="action_help"/>
+    <addaction name="action_about"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menu_2"/>
@@ -127,17 +143,17 @@
     <string>打开</string>
    </property>
   </action>
-  <action name="action_bangZhu">
+  <action name="action_help">
    <property name="text">
     <string>H&amp;elp</string>
    </property>
   </action>
-  <action name="action_guanYu">
+  <action name="action_about">
    <property name="text">
     <string>&amp;About</string>
    </property>
   </action>
-  <action name="action_tuiChu">
+  <action name="action_quit">
    <property name="text">
     <string>&amp;Quit</string>
    </property>

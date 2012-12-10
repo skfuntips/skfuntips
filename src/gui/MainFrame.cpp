@@ -40,12 +40,14 @@ MainFrame::MainFrame(QWidget* parent)
     ui_->verticalLayout->insertWidget(0,ProcessWidget_);
 
 
-    keywordsCompositeResourceWidget_->setDescription(tr("keywords list,one keyword per line\nkeywords process will replace these words with random method\nthat hide your truely speaking int text"));
-    highlightCompositeResourceWidget_->setDescription(tr("highlight regexp list\none regexp per line\nwill used to highlight result to warn unwanted word"));
+    keywordsCompositeResourceWidget_->setWindowTitle(tr("confit keywords db"));
+    keywordsCompositeResourceWidget_->setDescription(tr("keywords list,one keyword per line. keywords process will replace these words with random method that hide your truely speaking int text"));
+    highlightCompositeResourceWidget_->setWindowTitle(tr("confit highlight db"));
+    highlightCompositeResourceWidget_->setDescription(tr("highlight regexp list, one regexp per line .will used to highlight result to warn unwanted word"));
 
     connect(
-                ProcessWidget_,SIGNAL(chuLiGaiBian(ParamList)),
-                ParamListWidget_,SLOT(canShuLieBiaoGaiBian(ParamList)));
+                ProcessWidget_,SIGNAL(processorChanged(ParamList)),
+                ParamListWidget_,SLOT(paramListChanged(ParamList)));
 
 
     ui_->horizontalLayout_zhuYao->insertWidget(0,SourceWidget_);
@@ -53,15 +55,15 @@ MainFrame::MainFrame(QWidget* parent)
 
     ProcessWidget_->on_comboBox_currentIndexChanged(0);
 
-    connect(SourceWidget_,SIGNAL(neiRongBianHua()),
+    connect(SourceWidget_,SIGNAL(contentsChanged()),
             ProcessWidget_,SLOT(yuanGaiBian()));
 
     connect(ProcessWidget_,SIGNAL(yingGaiChuLi()),
             this,SLOT(executeProcess()));
 
-    connect(&KeywordsDB::instance(),SIGNAL(chongZhi()),this,SLOT(executeProcess()));
+    connect(&KeywordsDB::instance(),SIGNAL(reset()),this,SLOT(executeProcess()));
 
-    connect(ui_->action_tuiChu,SIGNAL(triggered()),this,SLOT(close()));
+    connect(ui_->action_quit,SIGNAL(triggered()),this,SLOT(close()));
 
     connect(ui_->pushButton_gaoLiangCiKu,SIGNAL(clicked()),highlightCompositeResourceWidget_,SLOT(show()));
 
@@ -81,10 +83,10 @@ void MainFrame::executeProcess(){
 
     IProcessor* dangQianChuLi=ProcessWidget_->dangQian();
 
-    ResultType leiXing=dangQianChuLi->resultLeiXing();
+    ResultType leiXing=dangQianChuLi->resultType();
 
 
-    QStringList yuan=SourceWidget_->neiRong();
+    QStringList yuan=SourceWidget_->contents();
 
 
     if(tuiGuang && (leiXing!=STRING)){
@@ -106,7 +108,7 @@ void MainFrame::executeProcess(){
 
 }
 
-void MainFrame::on_action_guanYu_triggered(){
+void MainFrame::on_action_about_triggered(){
 
     QDialog linShi(this);
 
@@ -117,9 +119,9 @@ void MainFrame::on_action_guanYu_triggered(){
 
 }
 
-void MainFrame::on_pushButton_zaiCi_clicked(){
+void MainFrame::on_pushButton_again_clicked(){
 
-    SourceWidget_->sheZhiWenBen(ResultWidget_->kongJianWenBen());
+    SourceWidget_->setContents(ResultWidget_->contents());
 }
 
 void MainFrame::processFinished(){
@@ -128,28 +130,32 @@ void MainFrame::processFinished(){
 
     Result result=ProcessThread_->result();
 
-    if(tuiGuang && (ProcessWidget_->dangQian()->resultLeiXing()==STRING)){
+    bool stringResult=(ProcessWidget_->dangQian()->resultType()==STRING);
+
+    if(tuiGuang && stringResult){
         QStringList linShi=result.string();
         linShi.append(shareString_);
         result.setString(linShi);
     }
 
-    ResultWidget_->sheZhiResult(result);
+    ui_->pushButton_again->setEnabled(stringResult);
+
+    ResultWidget_->setResult(result);
 
     ui_->progressBar->setValue(0);
 
     setEnabled(true);
 }
 
-void MainFrame::on_action_bangZhu_triggered(){
+void MainFrame::on_action_help_triggered(){
 
     QString bangZhuLuJing=QApplication::instance()->applicationDirPath()
-            +QDir::separator()+"bangZhu.html";
+            +QDir::separator()+"help.html";
 
     if(!QFile::exists(bangZhuLuJing)){
         QMessageBox::critical(this,
-                                     tr("help file bangZhu.html not exists"),
-                                     tr("help file bangZhu.html not exists"));
+                                     tr("help file help.html not exists"),
+                                     tr("help file help.html not exists"));
         return;
     }
 

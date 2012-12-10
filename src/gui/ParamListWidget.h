@@ -24,7 +24,7 @@ public:
 
 public slots:
 
-    void canShuLieBiaoGaiBian(ParamList xinLieBiao);
+    void paramListChanged(ParamList xinLieBiao);
 
 private:
 

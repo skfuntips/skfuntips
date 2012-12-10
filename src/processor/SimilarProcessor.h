@@ -23,7 +23,7 @@ class SimilarProcessor :public LevelProcessor{
     virtual ~SimilarProcessor(){}
 
 
-    virtual ResultType resultLeiXing()const{
+    virtual ResultType resultType()const{
         return STRING;
     }
 

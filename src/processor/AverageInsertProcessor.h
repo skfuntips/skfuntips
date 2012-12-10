@@ -21,7 +21,7 @@ class AverageInsertProcessor :public LevelSeedProcessor{
       virtual ParamList paramList();
 
 
-         virtual ResultType resultLeiXing()const{
+         virtual ResultType resultType()const{
              return STRING;
          }
 

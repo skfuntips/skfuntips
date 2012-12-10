@@ -43,7 +43,7 @@ void ProcessWidget::on_comboBox_currentIndexChanged(int suoYin){
 
     ui_->label->setText(chuLi->description());
 
-    emit chuLiGaiBian(chuLi->paramList());
+    emit processorChanged(chuLi->paramList());
 
     emit yingGaiChuLi();
 }

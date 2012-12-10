@@ -19,7 +19,7 @@ public:
      virtual ~ShuffleProcessor (){}
 
 
-    virtual ResultType resultLeiXing()const{
+    virtual ResultType resultType()const{
         return STRING;
     }
 

@@ -10,8 +10,12 @@
     </message>
     <message>
         <location filename="../src/gui/AboutDialog.ui" line="25"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;SkFunTips&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;build wonderful tips from &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;simple text, makes your tip&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;attraction&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;SkFunTips&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;build wonderful tips from &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;simple text, makes your tip&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;attractive&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;花哨发帖神器&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;发帖写微博，不花哨怎么行？&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;花哨发帖神器让你的屌丝帖子瞬间高帅富！&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;帖子顶得住，奋勇霸论坛！&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;写情书表心意，怎么能直白白的写出你的心意？&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;花哨发帖神器助你把心意渗透在字里行间，&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;让你的他/她回味无穷！&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;SkFunTips&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;build wonderful tips from &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;simple text, makes your tip&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;attraction&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;花哨发帖神器&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;发帖写微博，不花哨怎么行？&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;花哨发帖神器让你的屌丝帖子瞬间高帅富！&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;帖子顶得住，奋勇霸论坛！&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;写情书表心意，怎么能直白白的写出你的心意？&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;花哨发帖神器助你把心意渗透在字里行间，&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;让你的他/她回味无穷！&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -209,27 +213,53 @@ SkFunTips</source>
     </message>
     <message>
         <location filename="../src/gui/MainFrame.cpp" line="43"/>
-        <source>keywords list,one keyword per line
-keywords process will replace these words with random method
-that hide your truely speaking int text</source>
-        <translation>关键词列表，每行一个词。\n关键词处理会将这些词汇做随机改变\n让文字不那么直白平淡,让你的心意渗透在字里行间</translation>
+        <source>confit keywords db</source>
+        <translation>配置关键词库</translation>
     </message>
     <message>
         <location filename="../src/gui/MainFrame.cpp" line="44"/>
+        <source>keywords list,one keyword per line. keywords process will replace these words with random method that hide your truely speaking int text</source>
+        <translation>关键词列表，每行一个词。
+关键词处理会将这些词汇做随机改变
+让文字不那么直白平淡,让你的心意渗透在字里行间</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/MainFrame.cpp" line="46"/>
+        <source>highlight regexp list, one regexp per line .will used to highlight result to warn unwanted word</source>
+        <translation>高亮表达式列表
+每行一个正则表达式。
+用于高亮结果文字内容</translation>
+    </message>
+    <message>
+        <source>keywords list,one keyword per line
+keywords process will replace these words with random method
+that hide your truely speaking int text</source>
+        <translation type="obsolete">关键词列表，每行一个词。\n关键词处理会将这些词汇做随机改变\n让文字不那么直白平淡,让你的心意渗透在字里行间</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/MainFrame.cpp" line="45"/>
+        <source>confit highlight db</source>
+        <translation>配置高粱词库</translation>
+    </message>
+    <message>
         <source>highlight regexp list
 one regexp per line
 will used to highlight result to warn unwanted word</source>
-        <translation>高亮表达式列表，每行一个正则表达式。\n用于高亮结果文字内容</translation>
+        <translation type="obsolete">高亮表达式列表，每行一个正则表达式。\n用于高亮结果文字内容</translation>
     </message>
     <message>
-        <location filename="../src/gui/MainFrame.cpp" line="151"/>
-        <location filename="../src/gui/MainFrame.cpp" line="152"/>
+        <location filename="../src/gui/MainFrame.cpp" line="157"/>
+        <location filename="../src/gui/MainFrame.cpp" line="158"/>
+        <source>help file help.html not exists</source>
+        <translation>帮助文件help.html不存在</translation>
+    </message>
+    <message>
         <source>help file bangZhu.html not exists</source>
-        <translation>帮助文件bangZhu.html不存在</translation>
+        <translation type="obsolete">帮助文件bangZhu.html不存在</translation>
     </message>
     <message>
-        <location filename="../src/gui/MainFrame.cpp" line="161"/>
-        <location filename="../src/gui/MainFrame.cpp" line="162"/>
+        <location filename="../src/gui/MainFrame.cpp" line="167"/>
+        <location filename="../src/gui/MainFrame.cpp" line="168"/>
         <source>open help failed</source>
         <translation>帮助打开失败</translation>
     </message>
@@ -239,52 +269,52 @@ will used to highlight result to warn unwanted word</source>
         <translation>花哨发贴神器</translation>
     </message>
     <message>
-        <location filename="../src/gui/MainFrame.ui" line="44"/>
+        <location filename="../src/gui/MainFrame.ui" line="80"/>
         <source>keywords config</source>
         <translation>关键词库配置</translation>
     </message>
     <message>
-        <location filename="../src/gui/MainFrame.ui" line="51"/>
+        <location filename="../src/gui/MainFrame.ui" line="87"/>
         <source>highlights config</source>
         <translation>高亮词库配置</translation>
     </message>
     <message>
-        <location filename="../src/gui/MainFrame.ui" line="58"/>
+        <location filename="../src/gui/MainFrame.ui" line="66"/>
         <source>add share text</source>
         <translation>添加推广标记</translation>
     </message>
     <message>
-        <location filename="../src/gui/MainFrame.ui" line="76"/>
+        <location filename="../src/gui/MainFrame.ui" line="102"/>
         <source>copy current result to source</source>
         <translation>结果复制为源，准备下次处理</translation>
     </message>
     <message>
-        <location filename="../src/gui/MainFrame.ui" line="110"/>
+        <location filename="../src/gui/MainFrame.ui" line="126"/>
         <source>&amp;File</source>
         <translation>(&amp;F)文件</translation>
     </message>
     <message>
-        <location filename="../src/gui/MainFrame.ui" line="116"/>
+        <location filename="../src/gui/MainFrame.ui" line="132"/>
         <source>&amp;Help</source>
         <translation>(&amp;H)帮助</translation>
     </message>
     <message utf8="true">
-        <location filename="../src/gui/MainFrame.ui" line="127"/>
+        <location filename="../src/gui/MainFrame.ui" line="143"/>
         <source>打开</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/gui/MainFrame.ui" line="132"/>
+        <location filename="../src/gui/MainFrame.ui" line="148"/>
         <source>H&amp;elp</source>
         <translation>(&amp;H)帮助</translation>
     </message>
     <message>
-        <location filename="../src/gui/MainFrame.ui" line="137"/>
+        <location filename="../src/gui/MainFrame.ui" line="153"/>
         <source>&amp;About</source>
         <translation>(&amp;A)关于</translation>
     </message>
     <message>
-        <location filename="../src/gui/MainFrame.ui" line="142"/>
+        <location filename="../src/gui/MainFrame.ui" line="158"/>
         <source>&amp;Quit</source>
         <translation>(&amp;Q)退出</translation>
     </message>

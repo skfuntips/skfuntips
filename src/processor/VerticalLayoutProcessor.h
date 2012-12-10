@@ -33,7 +33,7 @@ class VerticalLayoutProcessor :public LevelSeedProcessor{
         ParamList paramList();
 
 
-        virtual ResultType resultLeiXing()const{
+        virtual ResultType resultType()const{
             return STRING;
         }
 

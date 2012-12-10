@@ -30,7 +30,7 @@ public:
 
 signals:
 
-    void chuLiGaiBian(ParamList canShuLieBiao);
+    void processorChanged(ParamList canShuLieBiao);
 
     void yingGaiChuLi();
 

@@ -28,7 +28,7 @@ SourceWidget::SourceWidget(QWidget *parent):
      zhongWenHangZiShu_=ui_->spinBox_huanHangZiFuShu->value();
 
      connect(ui_->textEdit_shuRu,SIGNAL(textChanged()),
-             this,SIGNAL(neiRongBianHua()));
+             this,SIGNAL(contentsChanged()));
 
      connect(ui_->groupBox_huanHang,SIGNAL(toggled(bool)),
              this,SLOT(qieHuanHuanHang(bool)));
@@ -44,11 +44,11 @@ SourceWidget::SourceWidget(QWidget *parent):
 }
 
 void SourceWidget::on_pushButton_jiaZaiWenJian_clicked(){
-    sheZhiWenBen(wenJianWenBen(this));
+    setContents(wenJianWenBen(this));
     
 }
 
-void SourceWidget::sheZhiWenBen(const QString& wenBen){
+void SourceWidget::setContents(const QString& wenBen){
 
     if (wenBen.isNull()) {
         return;
@@ -60,7 +60,7 @@ void SourceWidget::sheZhiWenBen(const QString& wenBen){
 
 void SourceWidget::on_pushButton_jianQieBan_clicked(){
 
-    sheZhiWenBen(jianQieBanWenBen(this));
+    setContents(jianQieBanWenBen(this));
 
 }
 
@@ -96,18 +96,18 @@ void SourceWidget::qieHuanHuanHang(bool kongZhi){
     QTextEdit::LineWrapMode xianZai=ui_->textEdit_shuRu->lineWrapMode();
 
     if (gaiBian || (yuanLai!=xianZai)) {
-        emit neiRongBianHua();
+        emit contentsChanged();
     }
 }
 
-QStringList SourceWidget::neiRong(){
+QStringList SourceWidget::contents(){
     return kongJianWenBen(ui_->textEdit_shuRu->document());
 }
 
 void SourceWidget::resizeEvent(QResizeEvent* ){
 
     if (ui_->textEdit_shuRu->lineWrapMode()==QTextEdit::WidgetWidth) {
-        emit neiRongBianHua();
+        emit contentsChanged();
     }
 }
 

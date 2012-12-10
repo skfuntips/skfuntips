@@ -22,7 +22,7 @@ class InsertProcessor :public LevelSeedProcessor{
 
 	  virtual Result process(const QStringList& f);
 
-      virtual ResultType resultLeiXing()const{
+      virtual ResultType resultType()const{
           return STRING;
       }
 
