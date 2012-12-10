@@ -72,7 +72,6 @@ then type make to compile
 
 finally ,copy generated *.qm files to bin/(for i18n)
 
-tips:
 
 used 3rd library
 encdet https://github.com/spiritloose/encdet
@@ -85,6 +84,9 @@ used to generate gif animation
 giflib4 has a bug which can not generate correct 1-bit depth gif.
 and most distro only ships giflib4 devel package
 I also include giflib 5.0.2 source,plus a CMake build script
+
+vimim http://vimim.googlecode.com/svn/vimim/vimim.html
+I use its pinyin db
 
 how to customize:
 
