@@ -72,15 +72,7 @@ then type make to compile
 
 finally ,copy generated *.qm files to bin/(for i18n)
 
-tips:giflib4 has a bug which can not generate correct 1-bit depth gif.
-giflib5(which breaks v4 API) is required. most distro only has 
-giflib4-devel lib, and you need to compile giflib5 yourself
-https://sourceforge.net/projects/giflib/files/giflib-5.x/
-
-then tell cmake to find giflib5 in your install dir
-
-cmake ../skipfuntips -DGIF_INCLUDE_DIR=/usr/local/include -DGIF_LIBRARY=/usr/local/libgif.a
-(replace /usr/local to your install dir)
+tips:
 
 used 3rd library
 encdet https://github.com/spiritloose/encdet
@@ -88,6 +80,11 @@ encdet is a CJK charset detect library from Mozilla-firefox
 its automake based build system is not windows-friendly
 I write a simple CMake script for it and include its source here
 
+giflib5 https://sourceforge.net/projects/giflib/files/giflib-5.x/
+used to generate gif animation
+giflib4 has a bug which can not generate correct 1-bit depth gif.
+and most distro only ships giflib4 devel package
+I also include giflib 5.0.2 source,plus a CMake build script
 
 how to customize:
 
@@ -97,3 +94,6 @@ every words(per line) will be used as 'keywords' in keywords process
 src/HighlightDB.txt for internal highlightDB,
 every regexp(per line) will be used for text result highlight
 this function can warn you that you don't want some words in result text
+
+
+TODO: port to android (based on necessitas) is welcome
