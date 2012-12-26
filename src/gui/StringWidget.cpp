@@ -35,7 +35,7 @@ void StringWidget::applyParam(IParam *canShu){
 
 
      StringParam *stringParam=
-         param<StringParam>();
+         qobject_cast<StringParam*>(canShu);
 
      Q_ASSERT(stringParam);
 

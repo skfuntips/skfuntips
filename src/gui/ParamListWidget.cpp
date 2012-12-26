@@ -3,28 +3,34 @@
 #include "param/IntRangeParam.h"
 #include "param/SeedParam.h"
 #include "param/FontParam.h"
+#include "param/StringParam.h"
+
 #include "ui_ParamListWidget.h"
 #include "IntRangeWidget.h"
 #include "FontWidget.h"
 #include "SeedWidget.h"
+#include "StringWidget.h"
+
 #include "IProcessor.h"
 
 
 
 
-static ParamWidget* yiGe(IParam* IParam){
+static ParamWidget* yiGe(IParam* param){
 
     ParamWidget *fanHuiZhi=NULL;
 
-    if(qobject_cast<IntRangeParam*>(IParam)){
+    if(qobject_cast<IntRangeParam*>(param)){
         fanHuiZhi=new IntRangeWidget();
-    }else if(qobject_cast<SeedParam*>(IParam)){
+    }else if(qobject_cast<SeedParam*>(param)){
         fanHuiZhi=new SeedWidget();
-    }else if(qobject_cast<FontParam*>(IParam)){
+    }else if(qobject_cast<FontParam*>(param)){
         fanHuiZhi=new FontWidget();
+    }else if(qobject_cast<StringParam*>(param)){
+        fanHuiZhi=new StringWidget();
     }
 
-    fanHuiZhi->bindParam(IParam);
+    fanHuiZhi->bindParam(param);
 
     Q_ASSERT(fanHuiZhi);
 

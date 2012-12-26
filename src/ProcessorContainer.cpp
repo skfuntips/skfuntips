@@ -11,6 +11,8 @@
 #include "processor/KeywordsProcessor.h"
 #include "processor/SimilarProcessor.h"
 #include "processor/VerticalLayoutProcessor.h"
+#include "processor/EncryptProcessor.h"
+#include "processor/DeEncryptProcessor.h"
 
 ProcessorContainer::ProcessorContainer(){
 
@@ -24,6 +26,8 @@ ProcessorContainer::ProcessorContainer(){
    push_back(new AverageInsertProcessor());
    push_back(new SimilarProcessor());
    push_back(new VerticalLayoutProcessor());
+   push_back(new EncryptProcessor());
+   push_back(new DeEncryptProcessor());
 
 
    push_back(new KeywordsProcessor());

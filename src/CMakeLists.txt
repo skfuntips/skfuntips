@@ -7,6 +7,7 @@ add_library(isp
      param/SeedParam.cpp
      param/IntRangeParam.cpp
      param/FontParam.cpp
+     param/StringParam.cpp
      IProcessor.h
      PinYinDB.cpp
      processor/AverageInsertProcessor.cpp
@@ -25,6 +26,8 @@ add_library(isp
      processor/LevelProcessor.cpp
      processor/ToImageProcessor.cpp
      processor/ToBigCharProcessor.cpp
+     processor/EncryptProcessor.cpp
+     processor/DeEncryptProcessor.cpp
      CompositeResource.cpp
      processor/ToGifProcessor.cpp
      GifSaver.cpp

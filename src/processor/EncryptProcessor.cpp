@@ -31,17 +31,25 @@ Result EncryptProcessor::process(const QStringList& ziFuChuan){
         return QStringList(tr("password is not 16 length"));
     }
 
+    for(int i=0;i<16;++i){
+        if(password.indexOf(password[i],i+1)!=-1){
+            return QStringList(tr("password can not contains duplicate char")+password[i]);
+        }
+    }
+
     QStringList ret;
 
     for(int i=0,size=ziFuChuan.size();i<size;++i){
 
         emit processPercent(i/qreal(size));
 
-        QString temp;
+        QString resultLine;
 
         foreach(QChar one,ziFuChuan[i]){
             uint8_t cell=one.cell(),
                     row=one.row();
+
+            QString temp;
 
             temp
                     .append(password[cell&15])
@@ -49,8 +57,9 @@ Result EncryptProcessor::process(const QStringList& ziFuChuan){
                     .append(password[row&15])
                     .append(password[(row&(15<<4))>>4]);
 
-            ret.append(temp);
+            resultLine.append(temp);
         }
+        ret.append(resultLine);
 
     }
 
