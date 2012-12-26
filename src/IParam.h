@@ -8,7 +8,7 @@
 
 class IParam :public QObject{
 
-    Q_OBJECT;
+    Q_OBJECT
 
 public:
 
@@ -49,7 +49,7 @@ signals:
 
 private:
 
-    IParam(const IParam&){};
+    IParam(const IParam&){}
     IParam& operator=(const IParam&);
 
     QString name_;

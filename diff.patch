@@ -1,0 +1,346 @@
+diff --git a/src/IParam.h b/src/IParam.h
+index 6682753..16700c7 100644
+--- a/src/IParam.h
++++ b/src/IParam.h
+@@ -8,7 +8,7 @@
+ 
+ class IParam :public QObject{
+ 
+-    Q_OBJECT;
++    Q_OBJECT
+ 
+ public:
+ 
+@@ -49,7 +49,7 @@ signals:
+ 
+ private:
+ 
+-    IParam(const IParam&){};
++    IParam(const IParam&){}
+     IParam& operator=(const IParam&);
+ 
+     QString name_;
+diff --git a/src/gui/StringWidget.cpp b/src/gui/StringWidget.cpp
+new file mode 100644
+index 0000000..5da7863
+--- /dev/null
++++ b/src/gui/StringWidget.cpp
+@@ -0,0 +1,48 @@
++#include "StringWidget.h"
++
++
++#include "ui_StringWidget.h"
++
++#include "param/StringParam.h"
++
++StringWidget::~StringWidget(){}
++
++StringWidget::StringWidget(QWidget * parent)
++     :ParamWidget(parent){
++    ui_.reset(new Ui::StringWidget());
++
++      ui_->setupUi(this);
++
++      connect(ui_->lineEdit,SIGNAL(textChanged(QString)),
++		    this,SLOT(applyUi()));
++
++     }
++
++void StringWidget::applyUi(){
++     StringParam* canShu=param<StringParam>();
++
++     if (!canShu) {
++	  return;
++     }
++
++     canShu->sheZhiZiFuChuan(ui_->lineEdit->text());
++
++
++}
++
++
++void StringWidget::applyParam(IParam *canShu){
++
++
++     StringParam *stringParam=
++         param<StringParam>();
++
++     Q_ASSERT(stringParam);
++
++     ui_->lineEdit->setText(stringParam->ziFuChuan());
++
++     setTitle(stringParam->name());
++
++}
++
++
+diff --git a/src/gui/StringWidget.h b/src/gui/StringWidget.h
+new file mode 100644
+index 0000000..ac505c6
+--- /dev/null
++++ b/src/gui/StringWidget.h
+@@ -0,0 +1,42 @@
++#ifndef STRING_WIDGET_H
++
++#define STRING_WIDGET_H
++
++#include <boost/scoped_ptr.hpp>
++
++#include "ParamWidget.h"
++
++class StringParam;
++
++namespace Ui{
++class StringWidget;
++}
++
++class StringWidget :public ParamWidget{
++     Q_OBJECT
++
++     public :
++
++     typedef StringParam ParamType;
++
++        StringWidget(QWidget *parent=0);
++
++    virtual ~StringWidget();
++
++    protected:
++
++    virtual void applyParam(IParam *canShu);
++
++    private slots:
++
++     void applyUi();
++
++private:
++
++     boost::scoped_ptr<Ui::StringWidget> ui_;
++
++};
++
++
++#endif /* end of include guard: STRING_WIDGET_H */
++
+diff --git a/src/gui/StringWidget.ui b/src/gui/StringWidget.ui
+new file mode 100644
+index 0000000..27a120a
+--- /dev/null
++++ b/src/gui/StringWidget.ui
+@@ -0,0 +1,31 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<ui version="4.0">
++ <class>StringWidget</class>
++ <widget class="QWidget" name="StringWidget">
++  <property name="geometry">
++   <rect>
++    <x>0</x>
++    <y>0</y>
++    <width>151</width>
++    <height>56</height>
++   </rect>
++  </property>
++  <property name="windowTitle">
++   <string>Form</string>
++  </property>
++  <layout class="QVBoxLayout" name="verticalLayout">
++   <item>
++    <widget class="QLabel" name="label_shuoMing">
++     <property name="text">
++      <string>TextLabel</string>
++     </property>
++    </widget>
++   </item>
++   <item>
++    <widget class="QLineEdit" name="lineEdit"/>
++   </item>
++  </layout>
++ </widget>
++ <resources/>
++ <connections/>
++</ui>
+diff --git a/src/param/StringParam.cpp b/src/param/StringParam.cpp
+new file mode 100644
+index 0000000..1fe3ea3
+--- /dev/null
++++ b/src/param/StringParam.cpp
+@@ -0,0 +1,17 @@
++#include "StringParam.h"
++
++#include <QRegExp>
++
++StringParam::StringParam(QObject* parent)
++    :IParam(parent){}
++
++QString StringParam::jieShou(const QString &ziFuChuan){
++
++    ziFuChuan_=ziFuChuan;
++
++    return QString();
++}
++
++void StringParam::sheZhiZiFuChuan(const QString &ziFuChuan){
++    ziFuChuan_=ziFuChuan;
++}
+diff --git a/src/param/StringParam.h b/src/param/StringParam.h
+new file mode 100644
+index 0000000..b4a3bb0
+--- /dev/null
++++ b/src/param/StringParam.h
+@@ -0,0 +1,34 @@
++#ifndef STRING_PARAM_H
++#define STRING_PARAM_H
++
++#include "IParam.h"
++
++class StringParam :public IParam{
++
++    Q_OBJECT
++public:
++
++    StringParam(QObject * suoYouZhe=NULL);
++
++    virtual ~StringParam(){}
++
++    virtual QString zhuanHuanDaoZiFuChuan()const{
++        return ziFuChuan_;
++    }
++
++    virtual QString jieShou(const QString& ziFuChuan);
++
++    const QString& ziFuChuan()const{return ziFuChuan_;}
++
++public slots:
++
++    void sheZhiZiFuChuan(const QString& ziFuChuan);
++
++private:
++
++    QString ziFuChuan_;
++
++
++};
++
++#endif//STRING_PARAM_H
+diff --git a/src/processor/DeEncryptProcessor.cpp b/src/processor/DeEncryptProcessor.cpp
+new file mode 100644
+index 0000000..e69de29
+diff --git a/src/processor/DeEncryptProcessor.h b/src/processor/DeEncryptProcessor.h
+new file mode 100644
+index 0000000..e69de29
+diff --git a/src/processor/EncryptProcessor.cpp b/src/processor/EncryptProcessor.cpp
+new file mode 100644
+index 0000000..a77281c
+--- /dev/null
++++ b/src/processor/EncryptProcessor.cpp
+@@ -0,0 +1,68 @@
++#include "EncryptProcessor.h"
++#include "StringParam.h"
++#include "Result.h"
++
++
++EncryptProcessor::EncryptProcessor():
++    string_(new StringParam(this)){
++
++    string_->setName(tr("password"));
++    string_->setDescription(tr("16 char password"));
++    string_->sheZhiZiFuChuan(tr("abcd efgh ijkl mnop"));
++
++}
++
++QString EncryptProcessor::name()const{
++    return tr("encrypt process");
++}
++
++QString EncryptProcessor::description()const{
++    return tr("use 16 char to encrypt origin text");
++}
++
++
++Result EncryptProcessor::process(const QStringList& ziFuChuan){
++
++    QString password=string_->ziFuChuan();
++
++    password.remove(QRegExp("\\s"));
++
++    if(password.size()!=16){
++        return QStringList(tr("password is not 16 length"));
++    }
++
++    QStringList ret;
++
++    for(int i=0,size=ziFuChuan.size();i<size;++i){
++
++        emit processPercent(i/qreal(size));
++
++        QString temp;
++
++        foreach(QChar one,ziFuChuan[i]){
++            uint8_t cell=one.cell(),
++                    row=one.row();
++
++            temp
++                    .append(password[cell&15])
++                    .append(password[(cell&(15<<4))>>4])
++                    .append(password[row&15])
++                    .append(password[(row&(15<<4))>>4]);
++
++            ret.append(temp);
++        }
++
++    }
++
++    emit processPercent(1);
++
++
++    return ret;
++
++}
++
++ParamList EncryptProcessor::paramList(){
++    ParamList ret;
++    ret.push_back(string_);
++    return ret;
++}
+diff --git a/src/processor/EncryptProcessor.h b/src/processor/EncryptProcessor.h
+new file mode 100644
+index 0000000..eb60fe8
+--- /dev/null
++++ b/src/processor/EncryptProcessor.h
+@@ -0,0 +1,36 @@
++#ifndef ENCRYPT_PROCESSOR_H
++#define ENCRYPT_PROCESSOR_H
++
++#include "IProcessor.h"
++
++class StringParam;
++
++class EncryptProcessor: public IProcessor{
++
++    Q_OBJECT
++public:
++
++    EncryptProcessor();
++
++    virtual QString name()const;
++
++    virtual QString description()const;
++
++    virtual ~EncryptProcessor (){}
++
++    virtual Result process(const QStringList& ziFuChuan);
++
++    virtual ResultType resultType()const{
++        return STRING;
++    }
++
++    virtual ParamList paramList();
++
++
++private:
++
++    StringParam *string_;
++
++};
++
++#endif
