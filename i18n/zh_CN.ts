@@ -85,6 +85,95 @@
     </message>
 </context>
 <context>
+    <name>DeEncryptProcessor</name>
+    <message>
+        <location filename="../src/processor/DeEncryptProcessor.cpp" line="11"/>
+        <source>password</source>
+        <translation>密码</translation>
+    </message>
+    <message>
+        <source>16 char password</source>
+        <translation type="obsolete">16字密码，不可重复</translation>
+    </message>
+    <message>
+        <location filename="../src/processor/DeEncryptProcessor.cpp" line="12"/>
+        <source>16 char password (space is ignored, should not contain duplicate char)</source>
+        <translation>16字密码(忽略空格,不可有重复字符)</translation>
+    </message>
+    <message>
+        <location filename="../src/processor/DeEncryptProcessor.cpp" line="13"/>
+        <source>abcd efgh ijkl mnop</source>
+        <translation>幸福美满 阖家团圆 礼尚往来 仁义道德</translation>
+    </message>
+    <message>
+        <location filename="../src/processor/DeEncryptProcessor.cpp" line="18"/>
+        <source>de-encrypt process</source>
+        <translation>解密处理</translation>
+    </message>
+    <message>
+        <location filename="../src/processor/DeEncryptProcessor.cpp" line="22"/>
+        <source>use 16 char to de-encrypt origin text</source>
+        <translation>使用16字密码来解密文本</translation>
+    </message>
+    <message>
+        <location filename="../src/processor/DeEncryptProcessor.cpp" line="33"/>
+        <source>password is not 16 length</source>
+        <translation>密码长度必须为16（空格不计算在内）</translation>
+    </message>
+    <message>
+        <location filename="../src/processor/DeEncryptProcessor.cpp" line="38"/>
+        <source>password can not contains duplicate char</source>
+        <translation>密码不可包含相同的字符</translation>
+    </message>
+    <message>
+        <location filename="../src/processor/DeEncryptProcessor.cpp" line="64"/>
+        <source>following part can not be de-encrypt ,wrong password?</source>
+        <translation>部分文字无法解密，密码错误？</translation>
+    </message>
+    <message>
+        <source>unable to de-encrypt ,wrong password?</source>
+        <translation type="obsolete">无法解密，密码错误？</translation>
+    </message>
+</context>
+<context>
+    <name>EncryptProcessor</name>
+    <message>
+        <location filename="../src/processor/EncryptProcessor.cpp" line="9"/>
+        <source>password</source>
+        <translation>密码</translation>
+    </message>
+    <message>
+        <location filename="../src/processor/EncryptProcessor.cpp" line="10"/>
+        <source>16 char password</source>
+        <translation>16字密码</translation>
+    </message>
+    <message>
+        <location filename="../src/processor/EncryptProcessor.cpp" line="11"/>
+        <source>abcd efgh ijkl mnop</source>
+        <translation>幸福美满 阖家团圆 礼尚往来 仁义道德</translation>
+    </message>
+    <message>
+        <location filename="../src/processor/EncryptProcessor.cpp" line="16"/>
+        <source>encrypt process</source>
+        <translation>加密处理</translation>
+    </message>
+    <message>
+        <location filename="../src/processor/EncryptProcessor.cpp" line="20"/>
+        <source>use 16 char to encrypt origin text</source>
+        <translation>使用16字密码加密文本</translation>
+    </message>
+    <message>
+        <location filename="../src/processor/EncryptProcessor.cpp" line="31"/>
+        <source>password is not 16 length</source>
+        <translation>密码长度必须为16（空格不计算在内）</translation>
+    </message>
+    <message>
+        <location filename="../src/processor/EncryptProcessor.cpp" line="36"/>
+        <source>password can not contains duplicate char</source>
+        <translation>密码不可包含相同的字符</translation>
+    </message>
+</context>
+<context>
     <name>FontParam</name>
     <message>
         <location filename="../src/param/FontParam.cpp" line="20"/>
@@ -317,6 +406,29 @@ will used to highlight result to warn unwanted word</source>
         <location filename="../src/gui/MainFrame.ui" line="158"/>
         <source>&amp;Quit</source>
         <translation>(&amp;Q)退出</translation>
+    </message>
+</context>
+<context>
+    <name>OffsetProcessor</name>
+    <message>
+        <location filename="../src/processor/OffsetProcessor.cpp" line="9"/>
+        <source>offset</source>
+        <translation>偏移</translation>
+    </message>
+    <message>
+        <location filename="../src/processor/OffsetProcessor.cpp" line="10"/>
+        <source>offset value of char</source>
+        <translation>偏移值</translation>
+    </message>
+    <message>
+        <location filename="../src/processor/OffsetProcessor.cpp" line="16"/>
+        <source>offset process</source>
+        <translation>偏移处理</translation>
+    </message>
+    <message>
+        <location filename="../src/processor/OffsetProcessor.cpp" line="20"/>
+        <source>offset char unicode value</source>
+        <translation>将字符偏移为其他字符</translation>
     </message>
 </context>
 <context>
@@ -613,6 +725,19 @@ p, li { white-space: pre-wrap; }
         <location filename="../src/gui/SourceWidget.ui" line="103"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;近似的中文行宽度，英文符号等可更多&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation></translation>
+    </message>
+</context>
+<context>
+    <name>StringWidget</name>
+    <message>
+        <location filename="../src/gui/StringWidget.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/gui/StringWidget.ui" line="20"/>
+        <source>TextLabel</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

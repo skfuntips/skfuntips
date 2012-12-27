@@ -13,6 +13,7 @@
 #include "processor/VerticalLayoutProcessor.h"
 #include "processor/EncryptProcessor.h"
 #include "processor/DeEncryptProcessor.h"
+#include "processor/OffsetProcessor.h"
 
 ProcessorContainer::ProcessorContainer(){
 
@@ -28,6 +29,7 @@ ProcessorContainer::ProcessorContainer(){
    push_back(new VerticalLayoutProcessor());
    push_back(new EncryptProcessor());
    push_back(new DeEncryptProcessor());
+   push_back(new OffsetProcessor());
 
 
    push_back(new KeywordsProcessor());

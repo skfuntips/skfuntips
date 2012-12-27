@@ -9,7 +9,7 @@ DeEncryptProcessor::DeEncryptProcessor():
     string_(new StringParam(this)){
 
     string_->setName(tr("password"));
-    string_->setDescription(tr("16 char password"));
+    string_->setDescription(tr("16 char password (space is ignored, should not contain duplicate char)"));
     string_->sheZhiZiFuChuan(tr("abcd efgh ijkl mnop"));
 
 }
@@ -61,7 +61,8 @@ Result DeEncryptProcessor::process(const QStringList& ziFuChuan){
 
         foreach(QChar thisChar,thisLine){
             if(!map.contains(thisChar)){
-                return QStringList(tr("unable to de-encrypt ,wrong password?"));
+                ret.append(tr("following part can not be de-encrypt ,wrong password?"));
+                return ret;
             }
         }
 

@@ -39,6 +39,9 @@ void StringWidget::applyParam(IParam *canShu){
 
      Q_ASSERT(stringParam);
 
+     setTitle(canShu->name());
+     ui_->label_shuoMing->setText(canShu->description());
+
      ui_->lineEdit->setText(stringParam->ziFuChuan());
 
      setTitle(stringParam->name());

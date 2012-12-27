@@ -28,6 +28,7 @@ add_library(isp
      processor/ToBigCharProcessor.cpp
      processor/EncryptProcessor.cpp
      processor/DeEncryptProcessor.cpp
+     processor/OffsetProcessor.cpp
      CompositeResource.cpp
      processor/ToGifProcessor.cpp
      GifSaver.cpp
