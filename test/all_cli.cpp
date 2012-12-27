@@ -15,6 +15,8 @@
 #include "processor/KeywordsProcessor.h"
 #include "processor/SimilarProcessor.h"
 #include "processor/VerticalLayoutProcessor.h"
+#include "processor/EncryptProcessor.h"
+#include "processor/OffsetProcessor.h"
 #include "Result.h"
 
 
@@ -52,6 +54,8 @@ int main(int argc, char *argv[])
     IF_TEST(AverageInsertProcessor,wenJianMing);
     IF_TEST(SimilarProcessor,wenJianMing);
     IF_TEST(VerticalLayoutProcessor,wenJianMing);
+    IF_TEST(EncryptProcessor,wenJianMing);
+    IF_TEST(OffsetProcessor,wenJianMing);
     
     Q_ASSERT(false);
 }

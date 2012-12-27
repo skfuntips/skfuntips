@@ -57,6 +57,7 @@ foreach(inputVar ge_ci_1.txt
             ToGifProcessor ReverseProcessor
             ShuffleProcessor AverageInsertProcessor
             SimilarProcessor VerticalLayoutProcessor
+            EncryptProcessor OffsetProcessor
             )
 
 
