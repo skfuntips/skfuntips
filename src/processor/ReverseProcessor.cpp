@@ -13,7 +13,7 @@
 
 ReverseProcessor::ReverseProcessor(){
 
-    jiBie()->sheZhiSuoYou(0,0,1);
+    jiBie()->sheZhiSuoYou(1,0,1);
     jiBie()->setName(tr("level"));
     jiBie()->setDescription(tr("0:reverse per line,1: reverse all"));
 
