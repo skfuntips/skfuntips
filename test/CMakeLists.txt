@@ -71,3 +71,6 @@ foreach(inputVar ge_ci_1.txt
 
 endforeach(inputVar)
 
+
+add_executable(unicode_test unicode_test.cpp)
+target_link_libraries(unicode_test ${QT_LIBRARIES})
