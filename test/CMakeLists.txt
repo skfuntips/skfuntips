@@ -74,3 +74,12 @@ endforeach(inputVar)
 
 add_executable(unicode_test unicode_test.cpp)
 target_link_libraries(unicode_test ${QT_LIBRARIES})
+
+add_executable(encrypt_process_test encrypt_process_test.cpp)
+target_link_libraries(encrypt_process_test isp ${QT_LIBRARIES})
+add_test(test_encrypt_process ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/encrypt_process_test)
+
+
+add_executable(offset_process_test offset_process_test.cpp)
+target_link_libraries(offset_process_test isp ${QT_LIBRARIES})
+add_test(test_offset_process ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/offset_process_test)
