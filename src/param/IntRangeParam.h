@@ -21,11 +21,6 @@ public:
     int xiaXian()const{return xiaXian_;}
     int shangXian()const{return shangXian_;}
 
-	virtual QString zhuanHuanDaoZiFuChuan()const{
-        return QString::number(shuZhi_);
-    }
-
-	virtual QString jieShou(const QString& ziFuChuan);
 
 private:
 

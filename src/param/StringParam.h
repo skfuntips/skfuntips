@@ -12,12 +12,6 @@ public:
 
     virtual ~StringParam(){}
 
-    virtual QString zhuanHuanDaoZiFuChuan()const{
-        return ziFuChuan_;
-    }
-
-    virtual QString jieShou(const QString& ziFuChuan);
-
     const QString& ziFuChuan()const{return ziFuChuan_;}
 
 public slots:

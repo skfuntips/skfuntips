@@ -6,18 +6,12 @@
 #include <QFont>
 
 class FontParam :public IParam{
-    Q_OBJECT;
+    Q_OBJECT
 
     public:
 
     FontParam(QObject * suoYouZhe=0);
     
-    virtual QString zhuanHuanDaoZiFuChuan()const{
-	 return ziTi_.toString();
-    }
-
-    virtual QString jieShou(const QString& ziFuChuan);
-
     const QFont& ziTi()const{
         return ziTi_;
     }

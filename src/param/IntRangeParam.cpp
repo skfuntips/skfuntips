@@ -10,28 +10,7 @@ IntRangeParam::IntRangeParam(QObject * suoYouZhe)
     setName(tr("int range param"));
 }
 	
-QString IntRangeParam::jieShou(const QString& ziFuChuan){
 
-    bool Result=false;
-
-    int linShi=ziFuChuan.toInt(&Result);
-    
-    if (!Result) {
-        return "参数:\""+ziFuChuan+"\"无法转换为整数";
-    }
-
-    if (linShi<xiaXian_) {
-        return "参数"+QString::number(shuZhi_)+"小于下限"+xiaXian_;
-    }
-
-    if (linShi>shangXian_) {
-        return "参数"+QString::number(shuZhi_)+"大于上限"+shangXian_;
-    }
-
-    shuZhi_=linShi;
-
-    return QString();
-}
 
 void IntRangeParam::sheZhiSuoYou(
         int shuZhiSheZhi, int xiaXianSheZhi, int shangXianSheZhi){

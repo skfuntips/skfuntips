@@ -22,33 +22,6 @@ FontParam::FontParam(QObject* suoYouZhe):
       setName(tr("select font"));
      }
 
-QString FontParam::jieShou(const QString& ziFuChuan){
-
-    QFont xin;
-
-    bool Result=xin.fromString(ziFuChuan);
-
-    if(!Result){
-        return tr("unable to load front from desc");
-    }
-
-    sheZhiZiTi(xin);
-   
-
-/*
-    QFontDatabase ziTiKu;
-
-    QList<QFontDatabase::WritingSystem> zhiChiYuYan=ziTiKu.writingSystems(ziTi_.family());
-
-    if (zhiChiYuYan.indexOf(QFontDatabase::SimplifiedChinese)==-1) {
-	 ziTi_=yuanLai;
-	 return " 此字体不支持中文显示";
-    }
-    */
-
-    return QString();
-
-}
 
 
 

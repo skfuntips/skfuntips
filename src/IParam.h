@@ -31,9 +31,6 @@ public:
         return description_;
     }
 
-	virtual QString zhuanHuanDaoZiFuChuan()const=0;
-
-	virtual QString jieShou(const QString& ziFuChuan)=0;
 
     void setDescription(const QString& shuoMing){
         description_=shuoMing;

@@ -18,15 +18,6 @@ class SeedParam :public IParam{
 
         virtual ~SeedParam(){}
 
-        virtual QString zhuanHuanDaoZiFuChuan()const{
-            return ziFuChuan_;
-        }
-
-        virtual QString jieShou(const QString& ziFuChuan){
-            sheZhiZiFuChuan(ziFuChuan);
-            return QString();
-        }
-
         void chongZhiJiShuQi(){
             ziFuChuanWeiZhi_=0;
         }
