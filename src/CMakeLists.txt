@@ -8,6 +8,7 @@ add_library(isp
      param/IntRangeParam.cpp
      param/FontParam.cpp
      param/StringParam.cpp
+     param/ImageListParam.cpp
      IProcessor.h
      PinYinDB.cpp
      processor/AverageInsertProcessor.cpp
