@@ -182,9 +182,8 @@
         <translation>选择字体</translation>
     </message>
     <message>
-        <location filename="../src/param/FontParam.cpp" line="32"/>
         <source>unable to load front from desc</source>
-        <translation>无法从指定的描述加载字体</translation>
+        <translation type="obsolete">无法从指定的描述加载字体</translation>
     </message>
 </context>
 <context>
@@ -198,6 +197,42 @@
         <location filename="../src/gui/FontWidget.ui" line="38"/>
         <source>select beautiful font to build high tip</source>
         <translation>选择very Hight字体</translation>
+    </message>
+</context>
+<context>
+    <name>ImageListParam</name>
+    <message>
+        <location filename="../src/param/ImageListParam.cpp" line="6"/>
+        <source>list of image param</source>
+        <translation>图片列表</translation>
+    </message>
+</context>
+<context>
+    <name>ImageListWidget</name>
+    <message>
+        <location filename="../src/gui/ImageListWidget.ui" line="20"/>
+        <source>Form</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../src/gui/ImageListWidget.ui" line="26"/>
+        <source>add</source>
+        <translation>添加</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/ImageListWidget.ui" line="33"/>
+        <source>clear</source>
+        <translation>清空</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/ImageListWidget.ui" line="40"/>
+        <source>0</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../src/gui/ImageListWidget.ui" line="47"/>
+        <source>picture(s)</source>
+        <translation>张</translation>
     </message>
 </context>
 <context>
@@ -495,16 +530,19 @@ will used to highlight result to warn unwanted word</source>
         <translation>非法表达式:</translation>
     </message>
     <message>
+        <location filename="../src/gui/ImageListWidget.cpp" line="48"/>
         <location filename="../src/gui/gongJu.cpp" line="15"/>
         <source>open file</source>
         <translation>从文件载入</translation>
     </message>
     <message>
+        <location filename="../src/gui/ImageListWidget.cpp" line="57"/>
         <location filename="../src/gui/gongJu.cpp" line="26"/>
         <source>unable to open file</source>
         <translation>无法打开文件</translation>
     </message>
     <message>
+        <location filename="../src/gui/ImageListWidget.cpp" line="58"/>
         <location filename="../src/gui/gongJu.cpp" line="27"/>
         <source>file open failed</source>
         <translation>文件打开失败</translation>
@@ -732,12 +770,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../src/gui/StringWidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/gui/StringWidget.ui" line="20"/>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -813,42 +851,52 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>ToGifProcessor</name>
     <message>
-        <location filename="../src/processor/ToGifProcessor.cpp" line="25"/>
+        <location filename="../src/processor/ToGifProcessor.cpp" line="27"/>
         <source>image width</source>
         <translation>图像宽度</translation>
     </message>
     <message>
-        <location filename="../src/processor/ToGifProcessor.cpp" line="26"/>
+        <location filename="../src/processor/ToGifProcessor.cpp" line="28"/>
         <source>image width of gif (in pixel)</source>
         <translation>生成的gif图片宽度（像素）</translation>
     </message>
     <message>
-        <location filename="../src/processor/ToGifProcessor.cpp" line="29"/>
+        <location filename="../src/processor/ToGifProcessor.cpp" line="31"/>
         <source>text lines</source>
         <translation>行数</translation>
     </message>
     <message>
-        <location filename="../src/processor/ToGifProcessor.cpp" line="30"/>
+        <location filename="../src/processor/ToGifProcessor.cpp" line="32"/>
         <source>how many text line will appear in a frame</source>
         <translation>一幅画面中出现多少行文字</translation>
     </message>
     <message>
-        <location filename="../src/processor/ToGifProcessor.cpp" line="33"/>
+        <location filename="../src/processor/ToGifProcessor.cpp" line="35"/>
         <source>frame length</source>
         <translation>定格时间</translation>
     </message>
     <message>
-        <location filename="../src/processor/ToGifProcessor.cpp" line="35"/>
+        <location filename="../src/processor/ToGifProcessor.cpp" line="37"/>
         <source>how many seconds a frame will stay</source>
         <translation>一幅画面持续多少秒</translation>
     </message>
     <message>
         <location filename="../src/processor/ToGifProcessor.cpp" line="39"/>
+        <source>insert image</source>
+        <translation>插入的图片</translation>
+    </message>
+    <message>
+        <location filename="../src/processor/ToGifProcessor.cpp" line="40"/>
+        <source>images to insert as random frames</source>
+        <translation>用于随机插入的图片</translation>
+    </message>
+    <message>
+        <location filename="../src/processor/ToGifProcessor.cpp" line="44"/>
         <source>turn text to loop animationed gif</source>
         <translation>将文字变成循环播放的gif动画</translation>
     </message>
     <message>
-        <location filename="../src/processor/ToGifProcessor.cpp" line="60"/>
+        <location filename="../src/processor/ToGifProcessor.cpp" line="65"/>
         <source>to gif process</source>
         <translation>变gif动画处理</translation>
     </message>
