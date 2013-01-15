@@ -5,6 +5,8 @@
 
 class IntRangeParam;
 
+class ImageListParam;
+
 class FontParam;
 
 class ToGifProcessor:public IProcessor{
@@ -43,6 +45,7 @@ private:
 
     IntRangeParam *jianGe_;
 
+    ImageListParam *tuPian_;
 
 
 };

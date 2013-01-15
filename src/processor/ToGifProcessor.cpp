@@ -1,6 +1,7 @@
 #include "ToGifProcessor.h"
 #include "param/IntRangeParam.h"
 #include "param/FontParam.h"
+#include "param/ImageListParam.h"
 
 #include<QTextDocument>
 #include<QDebug>
@@ -17,7 +18,8 @@ ToGifProcessor::ToGifProcessor():
     ziTi_(new FontParam(this)),
     kuan_(new IntRangeParam(this)),
     hang_(new IntRangeParam(this)),
-    jianGe_(new IntRangeParam(this))
+    jianGe_(new IntRangeParam(this)),
+    tuPian_(new ImageListParam(this))
 {
 
     int ziTiKuan=ziTi_->ziTi().pixelSize();
@@ -33,6 +35,9 @@ ToGifProcessor::ToGifProcessor():
     jianGe_->setName(tr("frame length"));
     jianGe_->sheZhiSuoYou(2,1,100);
     jianGe_->setDescription(tr("how many seconds a frame will stay"));
+
+    tuPian_->setName(tr("insert image"));
+    tuPian_->setDescription(tr("images to insert as random frames"));
 }
 
 QString ToGifProcessor::description()const{
@@ -70,6 +75,7 @@ static QImage kongTuPian(int kuan,int gao){
 
 }
 
+
 Result ToGifProcessor::process(const QStringList& f){
 
     int kuan=(kuan_->shuZhi()/4+1)*4,
@@ -103,7 +109,22 @@ Result ToGifProcessor::process(const QStringList& f){
 
     GifSaver saver(kuan,gao);
 
+    QList<QImage> imageList=tuPian_->images();
+
+    int imageNumber=imageList.size();
+
+    int seg=ye/qMax(1,imageNumber-1);
+
     for(int i=0;i<ye;++i){
+
+        if(!imageList.isEmpty()){
+            if(i%seg==0){
+                saver.tianJiaYiZhen(imageList[qMin(i/seg,imageNumber-1)]);
+            }
+
+        }
+
+
         QTextDocument buJu(heBingDuoHang(neiRong,i*hang,(i+1)*hang));
 
         buJu.setDefaultFont(ziTi_->ziTi());
@@ -119,8 +140,14 @@ Result ToGifProcessor::process(const QStringList& f){
 
         saver.tianJiaYiZhen(zhen);
 
+
+
         emit processPercent(i/qreal(ye)*100);
 
+    }
+
+    if(!imageList.isEmpty()){
+        saver.tianJiaYiZhen(imageList[0]);
     }
 
     int jianGe=jianGe_->shuZhi();
@@ -133,12 +160,13 @@ Result ToGifProcessor::process(const QStringList& f){
 
 ParamList ToGifProcessor::paramList(){
 
-    ParamList Result;
+    ParamList result;
 
-    Result.push_back(ziTi_);
-    Result.push_back(kuan_);
-    Result.push_back(hang_);
-    Result.push_back(jianGe_);
+    result.push_back(ziTi_);
+    result.push_back(kuan_);
+    result.push_back(hang_);
+    result.push_back(jianGe_);
+    result.push_back(tuPian_);
 
-    return Result;
+    return result;
 }
