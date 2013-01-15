@@ -21,10 +21,15 @@ GifSaver::GifSaver(int kuan, int gao){
 
 
 
-void GifSaver::tianJiaYiZhen(const QImage &zhen){
+void GifSaver::tianJiaYiZhen(const QImage &yuanShi){
 
-    Q_ASSERT(kuan_==zhen.width());
-    Q_ASSERT(gao_==zhen.height());
+    QImage zhen=yuanShi;
+
+    if((zhen.width()!=kuan_)||(zhen.height()!=gao_)){
+
+        zhen=yuanShi.scaled(kuan_,gao_,Qt::KeepAspectRatio);
+    }
+
 
     if(zhen.format()!=QImage::Format_Mono){
         firstColorImage_=zhen;
