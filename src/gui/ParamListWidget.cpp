@@ -4,12 +4,14 @@
 #include "param/SeedParam.h"
 #include "param/FontParam.h"
 #include "param/StringParam.h"
+#include "param/ImageListParam.h"
 
 #include "ui_ParamListWidget.h"
 #include "IntRangeWidget.h"
 #include "FontWidget.h"
 #include "SeedWidget.h"
 #include "StringWidget.h"
+#include "ImageListWidget.h"
 
 #include "IProcessor.h"
 
@@ -28,6 +30,8 @@ static ParamWidget* yiGe(IParam* param){
         fanHuiZhi=new FontWidget();
     }else if(qobject_cast<StringParam*>(param)){
         fanHuiZhi=new StringWidget();
+    }else if(qobject_cast<ImageListParam*>(param)){
+        fanHuiZhi=new ImageListWidget();
     }
 
     fanHuiZhi->bindParam(param);
