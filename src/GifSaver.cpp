@@ -19,17 +19,6 @@ GifSaver::GifSaver(int kuan, int gao){
 
 }
 
-static QVector<QRgb> chuShiHua(){
-
-    QVector<QRgb> fanHui;
-
-    fanHui.push_back(Qt::black);
-    fanHui.push_back(Qt::white);
-
-
-    return fanHui;
-
-}
 
 
 void GifSaver::tianJiaYiZhen(const QImage &zhen){
@@ -37,14 +26,11 @@ void GifSaver::tianJiaYiZhen(const QImage &zhen){
     Q_ASSERT(kuan_==zhen.width());
     Q_ASSERT(gao_==zhen.height());
 
-    Q_ASSERT(zhen.format()==QImage::Format_Mono);
+    if(zhen.format()!=QImage::Format_Mono){
+        firstColorImage_=zhen;
+    }
 
-
-    static QVector<QRgb> biao=chuShiHua();
-
-    QImage zhuanHuan=zhen.convertToFormat(QImage::Format_Indexed8,biao);
-
-    suoYouZhen_.push_back(zhuanHuan);
+    suoYouZhen_.push_back(zhen);
 }
 
 static bool tianJiaXunHuan(GifFileType *gf){
@@ -93,6 +79,17 @@ static int xieWenJian(GifFileType* gf,const GifByteType* shuJu,int duoShao){
 
 
 QByteArray GifSaver::baoCunLinShi(int haoMiao){
+
+
+    QVector<QRgb> colorTable;
+
+    if(!firstColorImage_.isNull()){
+        colorTable=firstColorImage_.convertToFormat(QImage::Format_Indexed8).colorTable();
+        Q_ASSERT(colorTable.size()==256);
+    }else{
+        colorTable.push_back(Qt::black);
+        colorTable.push_back(Qt::white);
+    }
 
 
     ColorMapObject* tiaoSeBan= GifMakeMapObject(2, NULL);
@@ -152,8 +149,7 @@ QByteArray GifSaver::baoCunLinShi(int haoMiao){
         Q_ASSERT(Result!=GIF_ERROR);
 
 
-        QImage zhen=suoYouZhen_[zhenShu];
-
+        QImage zhen=suoYouZhen_[zhenShu].convertToFormat(QImage::Format_Indexed8,colorTable);
 
         for (int y = 0 ; y < gao_; y++) {
 

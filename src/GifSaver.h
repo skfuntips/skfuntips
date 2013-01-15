@@ -21,6 +21,8 @@ private:
 
   std::vector<QImage> suoYouZhen_;
 
+  QImage firstColorImage_;
+
   
 };
 
