@@ -225,14 +225,14 @@
         <translation>清空</translation>
     </message>
     <message>
-        <location filename="../src/gui/ImageListWidget.ui" line="40"/>
-        <source>0</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../src/gui/ImageListWidget.ui" line="47"/>
+        <location filename="../src/gui/ImageListWidget.cpp" line="30"/>
         <source>picture(s)</source>
         <translation>张</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/ImageListWidget.cpp" line="30"/>
+        <source>view</source>
+        <translation>查看</translation>
     </message>
 </context>
 <context>
