@@ -9,6 +9,7 @@ foreach(fileVar ResultWidget SourceWidget
          ParamListWidget ProcessWidget
          CompositeResourceWidget
          StringWidget ImageListWidget
+         ImagePreviewWidget
         )
 
      list(APPEND uiFiles ${fileVar}.ui)
