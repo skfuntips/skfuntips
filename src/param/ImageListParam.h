@@ -17,10 +17,22 @@ class ImageListParam :public IParam{
         emit valueChanged(this);
     }
 
+    void append(const QList<QImage>& pictures){
+
+        images_.append(pictures);
+
+        emit valueChanged(this);
+    }
+
     public slots:
 
     void clear(){
         images_.clear();
+        emit valueChanged(this);
+    }
+
+    void setImages(const QList<QImage>& images){
+        images_=images;
         emit valueChanged(this);
     }
 
