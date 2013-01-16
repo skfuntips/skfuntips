@@ -4,6 +4,7 @@
 #include <gif_lib.h>
 
 #include <QBuffer>
+#include <QPainter>
 #include <QDebug>
 
 using namespace std;
@@ -27,8 +28,21 @@ void GifSaver::tianJiaYiZhen(const QImage &yuanShi){
 
     if((zhen.width()!=kuan_)||(zhen.height()!=gao_)){
 
-        zhen=yuanShi.scaled(kuan_,gao_,Qt::KeepAspectRatio);
+        zhen=QImage(kuan_,gao_,yuanShi.format());
+
+        QPainter painter(&zhen);
+
+        painter.eraseRect(0,0,kuan_,gao_);
+
+        QImage scaled=yuanShi.scaled(kuan_,gao_,Qt::KeepAspectRatio);
+
+        painter.drawImage((kuan_-scaled.width())/2,
+                          (gao_-scaled.height())/2,scaled);
+
     }
+
+    Q_ASSERT(zhen.width()==kuan_);
+    Q_ASSERT(zhen.height()==gao_);
 
 
     if(zhen.format()!=QImage::Format_Mono){
@@ -97,7 +111,15 @@ QByteArray GifSaver::baoCunLinShi(int haoMiao){
     }
 
 
-    ColorMapObject* tiaoSeBan= GifMakeMapObject(2, NULL);
+    ColorMapObject* tiaoSeBan= GifMakeMapObject(colorTable.size(), NULL);
+
+    for(int i=0,size=colorTable.size();i<size;++i){
+        QRgb rgb=colorTable[i];
+        (tiaoSeBan->Colors)[i].Red=qRed(rgb);
+        (tiaoSeBan->Colors)[i].Green=qGreen(rgb);
+        (tiaoSeBan->Colors)[i].Blue=qBlue(rgb);
+
+    }
 
     std::fill_n((GifByteType*)(tiaoSeBan->Colors), 3, 0);
 
@@ -155,6 +177,8 @@ QByteArray GifSaver::baoCunLinShi(int haoMiao){
 
 
         QImage zhen=suoYouZhen_[zhenShu].convertToFormat(QImage::Format_Indexed8,colorTable);
+
+
 
         for (int y = 0 ; y < gao_; y++) {
 
