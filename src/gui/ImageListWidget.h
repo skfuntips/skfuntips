@@ -33,6 +33,8 @@ class ImageListWidget :public ParamWidget{
 
         void on_pushButton_clear_clicked();
 
+        void on_pushButton_view_clicked();
+
 private:
 
      boost::scoped_ptr<Ui::ImageListWidget> ui_;

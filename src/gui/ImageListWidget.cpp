@@ -6,6 +6,8 @@
 #include "ui_ImageListWidget.h"
 
 #include "param/ImageListParam.h"
+#include "gongJu.h"
+#include "ImagePreviewWidget.h"
 
 ImageListWidget::~ImageListWidget(){}
 
@@ -27,9 +29,11 @@ void ImageListWidget::applyParam(IParam *canShu){
 
      Q_ASSERT(imageListParam);
 
-     ui_->label->setText(QString::number(imageListParam->images().size()));
+     ui_->pushButton_view->setText(tr("view")+QString::number(imageListParam->images().size())+tr("picture(s)"));
 
      setTitle(imageListParam->name());
+
+     ui_->label->setText(canShu->description());
 
 }
 
@@ -44,22 +48,10 @@ void ImageListWidget::on_pushButton_append_clicked(){
     }
 
 
-    QString wenJianMing=QFileDialog::getOpenFileName
-        (this,QObject::tr("open file"),QString(),"*.bmp *.jpg *.png");
 
-    if(wenJianMing.isNull()){
-        return;
-    }
+    QList<QImage> loadedImages=loadImages(this);
 
-    QImage image(wenJianMing);
-
-    if(image.isNull()){
-        QMessageBox::critical(this,QObject::tr("unable to open file")+wenJianMing,
-                QObject::tr("file open failed"));
-        return;
-    }
-
-    imageListParam->append(image);
+    imageListParam->append(loadedImages);
 
     applyParam(param<IParam>());
 
@@ -76,5 +68,20 @@ void ImageListWidget::on_pushButton_clear_clicked(){
 
     imageListParam->clear();
     applyParam(param<IParam>());
+
+}
+
+void ImageListWidget::on_pushButton_view_clicked(){
+
+
+    ImageListParam *imageListParam=
+        param<ImageListParam>();
+
+    if(!imageListParam){
+        return;
+    }
+
+    ImagePreviewWidget widget(imageListParam->images(),this);
+
 
 }
