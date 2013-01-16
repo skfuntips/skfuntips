@@ -113,15 +113,19 @@ Result ToGifProcessor::process(const QStringList& f){
 
     int imageNumber=imageList.size();
 
-    int seg=ye/qMax(1,imageNumber-1);
+    int seg=ye/qMax(1,imageNumber);
+
+    int insertNumber=0;
 
     for(int i=0;i<ye;++i){
 
         if(!imageList.isEmpty()){
             if(i%seg==0){
-                saver.tianJiaYiZhen(imageList[qMin(i/seg,imageNumber-1)]);
+                if(insertNumber<imageNumber){
+                    saver.tianJiaYiZhen(imageList[insertNumber]);
+                    ++insertNumber;
+                }
             }
-
         }
 
 
