@@ -50,3 +50,21 @@ QString jianQieBanWenBen(QWidget* parent){
     return zhanTie;
 }
 
+
+QList<QImage> loadImages(QWidget* parent){
+    QStringList fileNames=QFileDialog::getOpenFileNames
+        (parent,QObject::tr("open file"),QString(),"*.bmp *.jpg *.png");
+
+    QList<QImage> ret;
+
+    foreach(const QString& fileName,fileNames){
+
+        QImage image(fileName);
+        if(!image.isNull()){
+            ret.append(image);
+        }
+    }
+
+    return ret;
+
+}
