@@ -14,12 +14,14 @@ class ImageListParam :public IParam{
 
     void append(const QImage& picture){
         images_.append(picture);
+        emit valueChanged(this);
     }
 
     public slots:
 
     void clear(){
         images_.clear();
+        emit valueChanged(this);
     }
 
     const QList<QImage> images()const{return images_;}
