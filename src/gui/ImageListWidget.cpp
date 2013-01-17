@@ -7,7 +7,7 @@
 
 #include "param/ImageListParam.h"
 #include "gongJu.h"
-#include "ImagePreviewWidget.h"
+#include "ImagePreviewDialog.h"
 
 ImageListWidget::~ImageListWidget(){}
 
@@ -81,7 +81,12 @@ void ImageListWidget::on_pushButton_view_clicked(){
         return;
     }
 
-    ImagePreviewWidget widget(imageListParam->images(),this);
+    ImagePreviewDialog dialog(imageListParam->images(),this);
 
+    dialog.exec();
+
+    QList<QImage> images=dialog.images();
+
+    imageListParam->setImages(images);
 
 }
