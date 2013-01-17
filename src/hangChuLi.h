@@ -20,7 +20,7 @@ void hangChuLi(const QString& ziFuChuan,ChuLiHanShu chuLiHanShu);
 
 void hangChuLi(const QStringList& ziFuChuan,ChuLiHanShu chuLiHanShu);
 
-QString heBingDuoHang(const QStringList& duoHang,int qiShi=-1,int jieShu=-1);
+QString heBingDuoHang(const QStringList& duoHang,bool addLineBreak=true,int qiShi=-1,int jieShu=-1);
 
 QString quChuHuanHang(const QString& duoHang);
 

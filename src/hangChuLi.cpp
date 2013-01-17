@@ -92,7 +92,7 @@ void hangChuLi(const QString& ziFuChuan,ChuLiHanShu chuLiHanShu){
     hangChuLi(ziFuLiu,chuLiHanShu);
 }
 
-QString heBingDuoHang(const QStringList& duoHang,int qiShi,int jieShu){
+QString heBingDuoHang(const QStringList& duoHang,bool addLineBreak,int qiShi,int jieShu){
 
     QString fanHuiZhi;
 
@@ -108,8 +108,19 @@ QString heBingDuoHang(const QStringList& duoHang,int qiShi,int jieShu){
 
     Q_ASSERT(qiShi<=jieShu);
 
+    bool hasBreak=false;
+
     for(int i=qiShi;i<jieShu;++i){
-        fanHuiZhi.append(duoHang[i]).append('\n');
+        fanHuiZhi.append(duoHang[i]);
+        if(addLineBreak){
+            fanHuiZhi.append('\n');
+            hasBreak=true;
+        }
+    }
+
+    if(hasBreak){
+        Q_ASSERT(fanHuiZhi.endsWith('\n'));
+        fanHuiZhi.resize(fanHuiZhi.size()-1);
     }
 
     return fanHuiZhi;
