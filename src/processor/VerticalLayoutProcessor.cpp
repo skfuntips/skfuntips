@@ -40,7 +40,7 @@ QString VerticalLayoutProcessor::description()const{
 
 Result VerticalLayoutProcessor::process(const QStringList &ziFuChuan){
 
-    QString meiYouHuanHang=quChuHuanHang(heBingDuoHang(ziFuChuan));
+    QString meiYouHuanHang=heBingDuoHang(ziFuChuan,false);
 
     zhongZi()->chongZhiJiShuQi();
 
