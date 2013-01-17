@@ -25,6 +25,12 @@ class ReverseProcessor:public LevelProcessor{
         return STRING;
     }
 
+private:
+
+    Result simpleProcess(const QStringList& ziFuChuan);
+
+    Result complexProcess(const QStringList& ziFuChuan);
+
 
 };
 
