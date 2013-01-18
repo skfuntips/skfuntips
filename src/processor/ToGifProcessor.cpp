@@ -141,7 +141,7 @@ Result ToGifProcessor::process(const QStringList& f){
         }
 
 
-        QTextDocument buJu(heBingDuoHang(neiRong,i*hang,(i+1)*hang));
+        QTextDocument buJu(heBingDuoHang(neiRong,true,i*hang,(i+1)*hang));
 
         buJu.setDefaultFont(ziTi_->ziTi());
         buJu.setTextWidth(kuan);
