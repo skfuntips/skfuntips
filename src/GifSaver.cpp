@@ -201,10 +201,10 @@ QByteArray GifSaver::save(int haoMiao){
         ExtStr[0] = (false) ? 0x06 : 0x04;
 
         float finalMs=(frame.second==STATIC_FRAME?
-                           qMin(haoMiao,1000):frame.second);
+                           qMin(haoMiao,4000):frame.second);
 
-        ExtStr[1] = int(finalMs/1000*100) % 256;
-        ExtStr[2] = int(finalMs/1000*100) / 256;
+        ExtStr[1] = int(finalMs*100/1000) % 256;
+        ExtStr[2] = int(finalMs*100/1000) / 256;
 
         /* Dump graphics control block. */
         EGifPutExtension(GifFile, GRAPHICS_EXT_FUNC_CODE, 4, ExtStr);
