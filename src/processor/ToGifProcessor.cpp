@@ -109,18 +109,18 @@ Result ToGifProcessor::process(const QStringList& f){
 
     GifSaver saver(kuan,gao);
 
-    QList<QImage> imageList=tuPian_->images();
+    Segments segments=tuPian_->segments();
 
-    int imageNumber=imageList.size();
+    int segmentNumber=segments.size();
 
-    qreal segF=ye/qMax(1,imageNumber);
+    qreal segF=ye/qMax(1,segmentNumber);
 
 
 
     int segLength=1;
 
     if(segF<1){
-        segLength=imageNumber/ye+1;
+        segLength=segmentNumber/ye+1;
     }
 
     int seg=qMax(int(segF),1);
@@ -129,11 +129,11 @@ Result ToGifProcessor::process(const QStringList& f){
 
     for(int i=0;i<ye;++i){
 
-        if(!imageList.isEmpty()){
+        if(!segments.isEmpty()){
             if(i%seg==0){
                 for(int j=0;j<segLength;++j){
-                    if(imageIndex<imageNumber){
-                        saver.tianJiaYiZhen(imageList[imageIndex]);
+                    if(imageIndex<segmentNumber){
+                        saver.addFrameSegment(segments[imageIndex]);
                         ++imageIndex;
                     }
                 }
@@ -154,21 +154,19 @@ Result ToGifProcessor::process(const QStringList& f){
 
         Q_ASSERT((zhen.width()==kuan) && (zhen.height()==gao));
 
-        saver.tianJiaYiZhen(zhen);
-
-
+        saver.addFrame(Frame(zhen,jianGe_->shuZhi()*1000));
 
         emit processPercent(i/qreal(ye)*100);
 
     }
 
-    if(!imageList.isEmpty()){
-        saver.tianJiaYiZhen(imageList[0]);
+    if(!segments.isEmpty()){
+        saver.addFrame(segments[0].frames()[0]);
     }
 
     int jianGe=jianGe_->shuZhi();
     
-    QByteArray erJinZhi=saver.baoCunLinShi(jianGe);
+    QByteArray erJinZhi=saver.save(jianGe*1000);
 
     return erJinZhi;
 

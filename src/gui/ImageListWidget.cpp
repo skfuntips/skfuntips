@@ -6,6 +6,7 @@
 #include "ui_ImageListWidget.h"
 
 #include "param/ImageListParam.h"
+#include "FrameSegment.h"
 #include "gongJu.h"
 #include "ImagePreviewDialog.h"
 
@@ -29,7 +30,9 @@ void ImageListWidget::applyParam(IParam *canShu){
 
      Q_ASSERT(imageListParam);
 
-     ui_->pushButton_view->setText(tr("view")+QString::number(imageListParam->images().size())+tr("picture(s)"));
+     ui_->pushButton_view->setText(tr("view")+
+                                   QString::number(imageListParam->segments().size())
+                                   +tr("picture(s)"));
 
      setTitle(imageListParam->name());
 
@@ -49,7 +52,7 @@ void ImageListWidget::on_pushButton_append_clicked(){
 
 
 
-    QList<QImage> loadedImages=loadImages(this);
+    Segments loadedImages=loadImages(this);
 
     imageListParam->append(loadedImages);
 
@@ -81,11 +84,11 @@ void ImageListWidget::on_pushButton_view_clicked(){
         return;
     }
 
-    ImagePreviewDialog dialog(imageListParam->images(),this);
+    ImagePreviewDialog dialog(imageListParam->segments(),this);
 
     dialog.exec();
 
-    QList<QImage> images=dialog.images();
+    Segments images=dialog.segments();
 
     imageListParam->setImages(images);
 

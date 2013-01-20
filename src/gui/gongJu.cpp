@@ -1,9 +1,10 @@
 #include "gongJu.h"
 
+#include "FrameSegment.h"
+
 #include <QFileDialog>
 #include <QApplication>
 #include <QDebug>
-#include <QMovie>
 #include <QClipboard>
 #include <QFile>
 #include <QTextStream>
@@ -52,49 +53,26 @@ QString jianQieBanWenBen(QWidget* parent){
     return zhanTie;
 }
 
-static QList<QImage> loadGif(const QString& fileName){
-
-    QList<QImage> ret;
-
-    QMovie gif(fileName);
-    if(!gif.isValid()){
-        return ret;
-    }
-
-    gif.start();
-    gif.setPaused(true);
-
-    for(int i=0,size=gif.frameCount();i<size;++i){
-
-        QImage frame=gif.currentImage();
-
-        Q_ASSERT(!frame.isNull());
-
-        ret.append(frame);
-        gif.jumpToNextFrame();
-
-    }
-
-    return ret;
-
-}
-
-QList<QImage> loadImages(QWidget* parent){
+Segments loadImages(QWidget* parent){
     QStringList fileNames=QFileDialog::getOpenFileNames
         (parent,QObject::tr("open file"),QString(),"*.bmp *.jpg *.png *.gif");
 
-    QList<QImage> ret;
+    Segments ret;
 
     foreach(const QString& fileName,fileNames){
 
         if(fileName.endsWith("gif")){
-            ret.append(loadGif(fileName));
-            continue;
+            FrameSegment gifSegment(fileName);
+            if(gifSegment.isValid()){
+                ret.append(gifSegment);
+                continue;
+            }
+
         }
 
         QImage image(fileName);
         if(!image.isNull()){
-            ret.append(image);
+            ret.append(FrameSegment(image));
         }
     }
 

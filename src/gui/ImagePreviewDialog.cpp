@@ -3,38 +3,38 @@
 #include "ui_ImagePreviewDialog.h"
 
 
-void ImagePreviewDialog::append(const QList<QImage>& list){
-    foreach(QImage image,list){
+void ImagePreviewDialog::append(const Segments& segemnts){
+    foreach(FrameSegment segment,segemnts){
         QListWidgetItem *item=new QListWidgetItem(ui_->listWidget);
-        item->setIcon(QIcon(QPixmap::fromImage(image)));
+        item->setIcon(QIcon(QPixmap::fromImage(segment.frames()[0].first)));
     }
 }
 
-ImagePreviewDialog::ImagePreviewDialog(const QList<QImage>& images, QWidget *parent)
+ImagePreviewDialog::ImagePreviewDialog(const Segments& segments, QWidget *parent)
     :QDialog(parent),
-      images_(images),
+      segments_(segments),
       ui_(new Ui::ImagePreviewDialog()){
 
     ui_->setupUi(this);
 
     ui_->listWidget->setIconSize(QSize(100,100));
 
-    append(images_);
+    append(segments_);
 
 }
 
 void ImagePreviewDialog::on_pushButton_append_clicked(){
 
-    QList<QImage> loadedImages=loadImages(this);
+    Segments loadedImages=loadImages(this);
 
-    images_.append(loadedImages);
+    segments_.append(loadedImages);
 
     append(loadedImages);
 
 }
 
 void ImagePreviewDialog::on_pushButton_clear_clicked(){
-    images_.clear();
+    segments_.clear();
     ui_->listWidget->clear();
 }
 

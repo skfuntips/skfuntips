@@ -2,8 +2,9 @@
 
 #include "IParam.h"
 
-#include <QImage>
+#include "FrameSegment.h"
 
+typedef QList<FrameSegment> Segments;
 
 class ImageListParam :public IParam{
     Q_OBJECT
@@ -12,14 +13,14 @@ class ImageListParam :public IParam{
 
     ImageListParam(QObject * suoYouZhe=0);
 
-    void append(const QImage& picture){
-        images_.append(picture);
+    void append(const FrameSegment& segment){
+        segments_.append(segment);
         emit valueChanged(this);
     }
 
-    void append(const QList<QImage>& pictures){
+    void append(const Segments& segments){
 
-        images_.append(pictures);
+        segments_.append(segments);
 
         emit valueChanged(this);
     }
@@ -27,21 +28,20 @@ class ImageListParam :public IParam{
     public slots:
 
     void clear(){
-        images_.clear();
+        segments_.clear();
         emit valueChanged(this);
     }
 
-    void setImages(const QList<QImage>& images){
-        images_=images;
+    void setImages(const Segments& segments){
+        segments_=segments;
         emit valueChanged(this);
     }
 
-    const QList<QImage> images()const{return images_;}
-
+    const QList<FrameSegment>& segments()const{return segments_;}
 
     private:
 
-    QList<QImage> images_;
+    Segments segments_;
 
 
 };

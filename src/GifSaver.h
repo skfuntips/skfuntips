@@ -1,25 +1,30 @@
 #ifndef GIF_BAO_CUN_H
 #define GIF_BAO_CUN_H
 
-#include <vector>
+
 #include <QImage>
 
+#include "Frame.h"
+
+class FrameSegment;
 
 class GifSaver{
 public:
   
   GifSaver(int kuan, int gao);
 
-  void tianJiaYiZhen(const QImage& zhen);
+  void addFrame(const Frame& frame);
+
+  void addFrameSegment(const FrameSegment& frameSegment);
   
-  QByteArray baoCunLinShi(int haoMiao);
+  QByteArray save(int haoMiao);
 
 private:
 
   int kuan_;
   int gao_;
 
-  std::vector<QImage> suoYouZhen_;
+  Frames frames_;
 
   QImage firstColorImage_;
 

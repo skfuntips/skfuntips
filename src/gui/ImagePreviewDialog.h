@@ -5,6 +5,8 @@
 
 #include <QDialog>
 
+#include "FrameSegment.h"
+
 namespace Ui{
 class ImagePreviewDialog;
 }
@@ -14,12 +16,12 @@ class ImagePreviewDialog:public QDialog{
 
 public:
 
-    ImagePreviewDialog(const QList<QImage>& images=QList<QImage>(),QWidget* parent=0);
+    ImagePreviewDialog(const Segments& images=Segments(),QWidget* parent=0);
 
     ~ImagePreviewDialog();
 
-    const QList<QImage>& images()const{
-        return images_;
+    const Segments& segments()const{
+        return segments_;
     }
 
 private slots:
@@ -28,13 +30,13 @@ private slots:
 
     void on_pushButton_clear_clicked();
 
-    private:
+private:
 
-    QList<QImage> images_;
+    Segments segments_;
 
     boost::scoped_ptr<Ui::ImagePreviewDialog> ui_;
 
-    void append(const QList<QImage>& images);
+    void append(const Segments& segments);
 
 };
 

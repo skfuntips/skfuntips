@@ -1,3 +1,7 @@
+#include "GifSaver.h"
+
+#include "FrameSegment.h"
+
 #include <cstddef>
 #include <algorithm>
 
@@ -10,7 +14,7 @@
 using namespace std;
 
 
-#include "GifSaver.h"
+
 
 
 
@@ -20,21 +24,29 @@ GifSaver::GifSaver(int kuan, int gao){
 
 }
 
+void GifSaver::addFrameSegment(const FrameSegment& segment){
+
+    foreach(const Frame& frame,segment.frames()){
+        addFrame(frame);
+    }
+
+}
 
 
-void GifSaver::tianJiaYiZhen(const QImage &yuanShi){
+void GifSaver::addFrame(const Frame& frame){
 
-    QImage zhen=yuanShi;
+    QImage zhen=frame.first;
 
-    if((zhen.width()!=kuan_)||(zhen.height()!=gao_)){
+    if((zhen.width()!=kuan_)||(zhen.height()!=gao_)
+            ||(zhen.format()!=QImage::Format_Mono)){
 
-        zhen=QImage(kuan_,gao_,yuanShi.format());
+        zhen=QImage(kuan_,gao_,QImage::Format_RGB32);
 
         QPainter painter(&zhen);
 
         painter.eraseRect(0,0,kuan_,gao_);
 
-        QImage scaled=yuanShi.scaled(kuan_,gao_,Qt::KeepAspectRatio);
+        QImage scaled=zhen.scaled(kuan_,gao_,Qt::KeepAspectRatio);
 
         painter.drawImage((kuan_-scaled.width())/2,
                           (gao_-scaled.height())/2,scaled);
@@ -49,7 +61,8 @@ void GifSaver::tianJiaYiZhen(const QImage &yuanShi){
         firstColorImage_=zhen;
     }
 
-    suoYouZhen_.push_back(zhen);
+    frames_.append(Frame(zhen,frame.second));
+
 }
 
 static bool tianJiaXunHuan(GifFileType *gf){
@@ -99,7 +112,7 @@ static int xieWenJian(GifFileType* gf,const GifByteType* shuJu,int duoShao){
 static const int POWER_TABLE[]={1,2,4,8,16,32,64,128,256};
 static const int POWER_NUMBER = 9;
 
-QByteArray GifSaver::baoCunLinShi(int haoMiao){
+QByteArray GifSaver::save(int haoMiao){
 
 
     QVector<QRgb> colorTable;
@@ -119,13 +132,15 @@ QByteArray GifSaver::baoCunLinShi(int haoMiao){
             finalColorNumber=*range.second;
         }
 
+        finalColorNumber=qMax(finalColorNumber,2);
+
         indexedImage.setColorCount(finalColorNumber);
 
         colorTable=indexedImage.colorTable();
 
     }else{
-        colorTable.push_back(Qt::black);
-        colorTable.push_back(Qt::white);
+        colorTable.push_back(QColor(Qt::black).rgb());
+        colorTable.push_back(QColor(Qt::white).rgb());
     }
 
 
@@ -133,15 +148,16 @@ QByteArray GifSaver::baoCunLinShi(int haoMiao){
 
     for(int i=0,size=colorTable.size();i<size;++i){
         QRgb rgb=colorTable[i];
+
+        qDebug()<<QColor(rgb);
+
+        qDebug()<<qRed(rgb)<<qGreen(rgb)<<qBlue(rgb);
+
         (tiaoSeBan->Colors)[i].Red=qRed(rgb);
         (tiaoSeBan->Colors)[i].Green=qGreen(rgb);
         (tiaoSeBan->Colors)[i].Blue=qBlue(rgb);
 
     }
-
-    std::fill_n((GifByteType*)(tiaoSeBan->Colors), 3, 0);
-
-    std::fill_n((GifByteType*)(tiaoSeBan->Colors)+3, 3, 255);
 
 
     QByteArray fanHui;
@@ -172,15 +188,22 @@ QByteArray GifSaver::baoCunLinShi(int haoMiao){
 
     Q_ASSERT(chengGong);
 
-    for (int zhenShu=0,daXiao=suoYouZhen_.size(); zhenShu<daXiao; ++zhenShu) {
+    for (int zhenShu=0,daXiao=frames_.size(); zhenShu<daXiao; ++zhenShu) {
 
         static unsigned char
             ExtStr[4] = { 0x04, 0x00, 0x00, 0xff };
 
 
+        const Frame& frame=frames_[zhenShu];
+
+
         ExtStr[0] = (false) ? 0x06 : 0x04;
-        ExtStr[1] = haoMiao*100 % 256;
-        ExtStr[2] = haoMiao*100 / 256;
+
+        float finalMs=(frame.second==STATIC_FRAME?
+                           haoMiao:frame.second);
+
+        ExtStr[1] = int(finalMs/1000*100) % 256;
+        ExtStr[2] = int(finalMs/1000*100) / 256;
 
         /* Dump graphics control block. */
         EGifPutExtension(GifFile, GRAPHICS_EXT_FUNC_CODE, 4, ExtStr);
@@ -194,13 +217,24 @@ QByteArray GifSaver::baoCunLinShi(int haoMiao){
         Q_ASSERT(Result!=GIF_ERROR);
 
 
-        QImage zhen=suoYouZhen_[zhenShu].convertToFormat(QImage::Format_Indexed8,colorTable);
+        QImage zhen=frame.first.convertToFormat(
+                    QImage::Format_Indexed8,colorTable);
+
+        qDebug()<<colorTable.size();
+
+        zhen.save("temp"+QString::number(zhenShu)+".bmp");
 
 
 
         for (int y = 0 ; y < gao_; y++) {
 
             Result=EGifPutLine(GifFile, zhen.scanLine(y), kuan_);
+
+            //QDebug dbg=qDebug();
+            for(int s=0;s<kuan_;++s){
+               // dbg<<*(zhen.scanLine(y)+s);
+            }
+
             Q_ASSERT(Result!=GIF_ERROR);
         }
     }

@@ -15,6 +15,12 @@ QString wenJianWenBen(QWidget* parent);
 
 QString jianQieBanWenBen(QWidget* parent);
 
-QList<QImage> loadImages(QWidget* parent);
+
+template<typename T>
+class QList;
+
+class FrameSegment;
+
+QList<FrameSegment> loadImages(QWidget* parent);
 
 #endif /* end of include guard: GONG_JU_H */
