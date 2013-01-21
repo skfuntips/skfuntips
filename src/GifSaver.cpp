@@ -96,6 +96,8 @@ static int xieWenJian(GifFileType* gf,const GifByteType* shuJu,int duoShao){
 
 }
 
+static const int POWER_TABLE[]={1,2,4,8,16,32,64,128,256};
+static const int POWER_NUMBER = 9;
 
 QByteArray GifSaver::baoCunLinShi(int haoMiao){
 
@@ -103,8 +105,24 @@ QByteArray GifSaver::baoCunLinShi(int haoMiao){
     QVector<QRgb> colorTable;
 
     if(!firstColorImage_.isNull()){
-        colorTable=firstColorImage_.convertToFormat(QImage::Format_Indexed8).colorTable();
-        Q_ASSERT(colorTable.size()==256);
+        QImage indexedImage=firstColorImage_.convertToFormat(QImage::Format_Indexed8);
+
+        int colorNumber=indexedImage.colorCount();
+
+        std::pair<const int*,const int*> range=std::equal_range(
+                    POWER_TABLE,POWER_TABLE+POWER_NUMBER,colorNumber);
+
+        int finalColorNumber=colorNumber;
+
+        if(colorNumber!=*range.first){
+            Q_ASSERT(colorNumber<=*range.second);
+            finalColorNumber=*range.second;
+        }
+
+        indexedImage.setColorCount(finalColorNumber);
+
+        colorTable=indexedImage.colorTable();
+
     }else{
         colorTable.push_back(Qt::black);
         colorTable.push_back(Qt::white);
