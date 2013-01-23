@@ -201,7 +201,7 @@ QByteArray GifSaver::save(int haoMiao){
         ExtStr[0] = (false) ? 0x06 : 0x04;
 
         float finalMs=(frame.second==STATIC_FRAME?
-                           haoMiao:frame.second);
+                           qMin(haoMiao,1000):frame.second);
 
         ExtStr[1] = int(finalMs/1000*100) % 256;
         ExtStr[2] = int(finalMs/1000*100) / 256;
