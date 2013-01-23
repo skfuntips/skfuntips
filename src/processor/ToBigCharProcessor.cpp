@@ -23,7 +23,7 @@ zhongZi_(new SeedParam(this)),
     kongGe_->setName(tr("blank fill char"));
     kongGe_->setDescription(tr("char to fill blank pattern, sparse char like ' ' or '_' is recommended"));
 
-    kongGe_->sheZhiZiFuChuan(tr(" "));
+    kongGe_->sheZhiZiFuChuan(tr("_"));
 
     QFont ziTi=fontParam()->ziTi();
     ziTi.setPixelSize(12);
