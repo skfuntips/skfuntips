@@ -1,8 +1,9 @@
 
 #include "GifSaver.h"
 #include "Result.h"
+#include "Frame.h"
 
-#include <QImage>
+
 #include <QApplication>
 
 int main(int argc, char *argv[])
@@ -17,10 +18,10 @@ int main(int argc, char *argv[])
 
     GifSaver baoCun(100,100);
 
-    baoCun.tianJiaYiZhen(a1);
-    baoCun.tianJiaYiZhen(a2);
+    baoCun.addFrame(Frame(a1,STATIC_FRAME));
+    baoCun.addFrame(Frame(a2,STATIC_FRAME));
 
-    Result Result(baoCun.baoCunLinShi(1));
+    Result Result(baoCun.save(1000));
 
     Result.saveFile("gif.gif");
     
