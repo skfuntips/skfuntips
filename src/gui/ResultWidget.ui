@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>294</width>
-    <height>352</height>
+    <height>362</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -124,6 +124,13 @@
         </size>
        </property>
       </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_charCount">
+       <property name="text">
+        <string>char count</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>

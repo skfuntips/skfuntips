@@ -53,8 +53,8 @@ void ResultWidget::on_pushButton_saveToFile_clicked(){
 }
 
 
-void ResultWidget::setResult(const Result& ResultSheZhi){
-     Result_=ResultSheZhi;
+void ResultWidget::setResult(const Result& resultSet){
+     Result_=resultSet;
 
      bool jianQieBan=false;
      bool qingKong=false;
@@ -64,12 +64,19 @@ void ResultWidget::setResult(const Result& ResultSheZhi){
      case STRING:{
          ui_->stackedWidget->setCurrentIndex(0);
          ui_->plainTextEdit_ziFuChuanResult->document()->clear();
-         tianChong(ui_->plainTextEdit_ziFuChuanResult->document(),ResultSheZhi.string());
+
+         tianChong(ui_->plainTextEdit_ziFuChuanResult->
+                   document(),resultSet.string());
+
+         ui_->label_charCount->show();
+         ui_->label_charCount->setText(tr("char count:")
+                     +QString::number(ui_->plainTextEdit_ziFuChuanResult->document()->characterCount()));
          jianQieBan=true;
          qingKong=true;
          break;
      }
      case IMAGE:{
+         ui_->label_charCount->hide();
          ui_->stackedWidget->setCurrentIndex(1);
          ui_->label_tuPianResult->setMovie(NULL);
          ui_->label_tuPianResult->setPixmap(QPixmap::fromImage(Result_));
@@ -78,9 +85,10 @@ void ResultWidget::setResult(const Result& ResultSheZhi){
          break;
      }
      case GIF_ANIMATION:{
+         ui_->label_charCount->hide();
          ui_->stackedWidget->setCurrentIndex(1);
 
-         dongHua_.reset(new Gif(ResultSheZhi));
+         dongHua_.reset(new Gif(resultSet));
 
          QMovie *dianYing=dongHua_->dongHua();
 
