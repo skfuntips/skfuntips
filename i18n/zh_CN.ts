@@ -860,13 +860,13 @@ p, li { white-space: pre-wrap; }
         <translation>如同黑客帝国般，用小字组成一个大字（不同操作系统/浏览器/字体显示效果不同，可能与预想不同）</translation>
     </message>
     <message>
-        <location filename="../src/processor/ToBigCharProcessor.cpp" line="26"/>
         <source> </source>
-        <translation>  </translation>
+        <translation type="obsolete">  </translation>
     </message>
     <message>
+        <location filename="../src/processor/ToBigCharProcessor.cpp" line="26"/>
         <source>_</source>
-        <translation type="obsolete"> </translation>
+        <translation>—</translation>
     </message>
     <message>
         <location filename="../src/processor/ToBigCharProcessor.cpp" line="32"/>
