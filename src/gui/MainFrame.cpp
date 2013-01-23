@@ -169,3 +169,10 @@ void MainFrame::on_action_help_triggered(){
     }
 
 }
+
+void MainFrame::on_checkBox_tuiGuang_stateChanged(){
+    if(ProcessWidget_->realtimePreview()){
+        executeProcess();
+    }
+
+}

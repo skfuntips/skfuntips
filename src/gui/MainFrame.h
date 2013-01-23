@@ -40,6 +40,8 @@ private slots:
 
     void processFinished();
 
+    void on_checkBox_tuiGuang_stateChanged();
+
 private:
 
     SourceWidget *SourceWidget_;

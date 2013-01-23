@@ -28,6 +28,8 @@ public:
         return chuLiRongQi_;
     }
 
+    bool realtimePreview()const;
+
 signals:
 
     void processorChanged(ParamList canShuLieBiao);

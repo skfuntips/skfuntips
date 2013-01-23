@@ -48,11 +48,13 @@ void ProcessWidget::on_comboBox_currentIndexChanged(int suoYin){
     emit yingGaiChuLi();
 }
 
-void ProcessWidget::canShuGaiBian(){
-    bool shiShiYuLan=
-        (ui_->checkBox_canShuShiShi->checkState()==Qt::Checked);
+bool ProcessWidget::realtimePreview()const{
+    return ui_->checkBox_canShuShiShi->checkState()==Qt::Checked;
+}
 
-    if (shiShiYuLan) {
+void ProcessWidget::canShuGaiBian(){
+
+    if (realtimePreview()) {
         emit yingGaiChuLi();
     }
 
