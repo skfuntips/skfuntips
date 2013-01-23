@@ -923,13 +923,21 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../src/processor/ToGifProcessor.cpp" line="40"/>
-        <source>images to insert as random frames</source>
-        <translation>用于随机插入的图片</translation>
+        <source>images to insert as frames</source>
+        <translation>可选择图片插入到动画中</translation>
     </message>
     <message>
         <location filename="../src/processor/ToGifProcessor.cpp" line="44"/>
+        <source>turn text/image to loop animationed gif</source>
+        <translation>将图文混排的内容转换为gif动画</translation>
+    </message>
+    <message>
+        <source>images to insert as random frames</source>
+        <translation type="obsolete">用于随机插入的图片</translation>
+    </message>
+    <message>
         <source>turn text to loop animationed gif</source>
-        <translation>将文字变成循环播放的gif动画</translation>
+        <translation type="obsolete">将文字变成循环播放的gif动画</translation>
     </message>
     <message>
         <location filename="../src/processor/ToGifProcessor.cpp" line="65"/>
@@ -952,7 +960,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../src/processor/ToImageProcessor.cpp" line="25"/>
         <source>to image process</source>
-        <translation>变图片处理</translation>
+        <translation>文字变图处理</translation>
     </message>
     <message>
         <location filename="../src/processor/ToImageProcessor.cpp" line="42"/>

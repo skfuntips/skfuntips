@@ -26,7 +26,7 @@ ToGifProcessor::ToGifProcessor():
 
     kuan_->setName(tr("image width"));
     kuan_->setDescription(tr("image width of gif (in pixel)"));
-    kuan_->sheZhiSuoYou(ziTiKuan*5,ziTiKuan*1.5,1000);
+    kuan_->sheZhiSuoYou(ziTiKuan*10,ziTiKuan*1.5,qMax(ziTiKuan*50,1000));
 
     hang_->setName(tr("text lines"));
     hang_->setDescription(tr("how many text line will appear in a frame"));
@@ -37,11 +37,11 @@ ToGifProcessor::ToGifProcessor():
     jianGe_->setDescription(tr("how many seconds a frame will stay"));
 
     tuPian_->setName(tr("insert image"));
-    tuPian_->setDescription(tr("images to insert as random frames"));
+    tuPian_->setDescription(tr("images to insert as frames"));
 }
 
 QString ToGifProcessor::description()const{
-    return tr("turn text to loop animationed gif");
+    return tr("turn text/image to loop animationed gif");
 }
 
 
