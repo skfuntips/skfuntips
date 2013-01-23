@@ -216,23 +216,47 @@
     </message>
     <message>
         <location filename="../src/gui/ImageListWidget.ui" line="26"/>
+        <source>TextLabel</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../src/gui/ImageListWidget.ui" line="35"/>
         <source>add</source>
         <translation>添加</translation>
     </message>
     <message>
-        <location filename="../src/gui/ImageListWidget.ui" line="33"/>
+        <location filename="../src/gui/ImageListWidget.ui" line="42"/>
         <source>clear</source>
         <translation>清空</translation>
     </message>
     <message>
-        <location filename="../src/gui/ImageListWidget.cpp" line="30"/>
+        <location filename="../src/gui/ImageListWidget.cpp" line="35"/>
         <source>picture(s)</source>
         <translation>张</translation>
     </message>
     <message>
-        <location filename="../src/gui/ImageListWidget.cpp" line="30"/>
+        <location filename="../src/gui/ImageListWidget.ui" line="49"/>
+        <location filename="../src/gui/ImageListWidget.cpp" line="33"/>
         <source>view</source>
         <translation>查看</translation>
+    </message>
+</context>
+<context>
+    <name>ImagePreviewDialog</name>
+    <message>
+        <location filename="../src/gui/ImagePreviewDialog.ui" line="14"/>
+        <source>Dialog</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../src/gui/ImagePreviewDialog.ui" line="42"/>
+        <source>add</source>
+        <translation>添加</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/ImagePreviewDialog.ui" line="49"/>
+        <source>clear</source>
+        <translation>清空</translation>
     </message>
 </context>
 <context>
@@ -530,30 +554,28 @@ will used to highlight result to warn unwanted word</source>
         <translation>非法表达式:</translation>
     </message>
     <message>
-        <location filename="../src/gui/ImageListWidget.cpp" line="48"/>
-        <location filename="../src/gui/gongJu.cpp" line="15"/>
+        <location filename="../src/gui/gongJu.cpp" line="18"/>
+        <location filename="../src/gui/gongJu.cpp" line="58"/>
         <source>open file</source>
         <translation>从文件载入</translation>
     </message>
     <message>
-        <location filename="../src/gui/ImageListWidget.cpp" line="57"/>
-        <location filename="../src/gui/gongJu.cpp" line="26"/>
+        <location filename="../src/gui/gongJu.cpp" line="29"/>
         <source>unable to open file</source>
         <translation>无法打开文件</translation>
     </message>
     <message>
-        <location filename="../src/gui/ImageListWidget.cpp" line="58"/>
-        <location filename="../src/gui/gongJu.cpp" line="27"/>
+        <location filename="../src/gui/gongJu.cpp" line="30"/>
         <source>file open failed</source>
         <translation>文件打开失败</translation>
     </message>
     <message>
-        <location filename="../src/gui/gongJu.cpp" line="45"/>
+        <location filename="../src/gui/gongJu.cpp" line="48"/>
         <source>warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../src/gui/gongJu.cpp" line="46"/>
+        <location filename="../src/gui/gongJu.cpp" line="49"/>
         <source>no text content in clipboard</source>
         <translation>剪切板中没有文字内容</translation>
     </message>
@@ -571,6 +593,11 @@ will used to highlight result to warn unwanted word</source>
         <location filename="../src/gui/ResultWidget.cpp" line="49"/>
         <source>save to file</source>
         <translation>保存到文件</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/ResultWidget.cpp" line="72"/>
+        <source>char count:</source>
+        <translation>字符数:</translation>
     </message>
     <message>
         <location filename="../src/gui/ResultWidget.ui" line="20"/>
@@ -602,26 +629,35 @@ will used to highlight result to warn unwanted word</source>
         <source>clear</source>
         <translation>清空</translation>
     </message>
+    <message>
+        <location filename="../src/gui/ResultWidget.ui" line="131"/>
+        <source>char count</source>
+        <translation>字符数</translation>
+    </message>
 </context>
 <context>
     <name>ReverseProcessor</name>
     <message>
-        <location filename="../src/processor/ReverseProcessor.cpp" line="17"/>
+        <location filename="../src/processor/ReverseProcessor.cpp" line="18"/>
         <source>level</source>
         <translation>级别</translation>
     </message>
     <message>
-        <location filename="../src/processor/ReverseProcessor.cpp" line="18"/>
         <source>0:reverse per line,1: reverse all</source>
-        <translation>0：每行反转，1：全部反转</translation>
+        <translation type="obsolete">0：每行反转，1：全部反转</translation>
     </message>
     <message>
-        <location filename="../src/processor/ReverseProcessor.cpp" line="23"/>
+        <location filename="../src/processor/ReverseProcessor.cpp" line="19"/>
+        <source>0:reverse per line,1: reverse all,&gt;=2: reverse per N char</source>
+        <translation>0：每行反转，1：全部反转,2以上，每隔几个字符翻转</translation>
+    </message>
+    <message>
+        <location filename="../src/processor/ReverseProcessor.cpp" line="24"/>
         <source>reverse text ,makes your text right to left</source>
         <translation>反转文字，变成从右到左</translation>
     </message>
     <message>
-        <location filename="../src/processor/ReverseProcessor.cpp" line="43"/>
+        <location filename="../src/processor/ReverseProcessor.cpp" line="87"/>
         <source>reverse process</source>
         <translation>反转处理</translation>
     </message>
