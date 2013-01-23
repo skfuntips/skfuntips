@@ -40,13 +40,14 @@ void GifSaver::addFrame(const Frame& frame){
     if((zhen.width()!=kuan_)||(zhen.height()!=gao_)
             ||(zhen.format()!=QImage::Format_Mono)){
 
+
+        QImage scaled=zhen.scaled(kuan_,gao_,Qt::KeepAspectRatio);
+
         zhen=QImage(kuan_,gao_,QImage::Format_RGB32);
 
         QPainter painter(&zhen);
 
         painter.eraseRect(0,0,kuan_,gao_);
-
-        QImage scaled=zhen.scaled(kuan_,gao_,Qt::KeepAspectRatio);
 
         painter.drawImage((kuan_-scaled.width())/2,
                           (gao_-scaled.height())/2,scaled);
@@ -56,8 +57,11 @@ void GifSaver::addFrame(const Frame& frame){
     Q_ASSERT(zhen.width()==kuan_);
     Q_ASSERT(zhen.height()==gao_);
 
+    Q_ASSERT((zhen.format()==QImage::Format_RGB32)
+             || (zhen.format()==QImage::Format_Mono));
 
-    if(zhen.format()!=QImage::Format_Mono){
+
+    if((zhen.format()!=QImage::Format_Mono)&&firstColorImage_.isNull()){
         firstColorImage_=zhen;
     }
 
@@ -149,9 +153,6 @@ QByteArray GifSaver::save(int haoMiao){
     for(int i=0,size=colorTable.size();i<size;++i){
         QRgb rgb=colorTable[i];
 
-        qDebug()<<QColor(rgb);
-
-        qDebug()<<qRed(rgb)<<qGreen(rgb)<<qBlue(rgb);
 
         (tiaoSeBan->Colors)[i].Red=qRed(rgb);
         (tiaoSeBan->Colors)[i].Green=qGreen(rgb);
@@ -217,23 +218,21 @@ QByteArray GifSaver::save(int haoMiao){
         Q_ASSERT(Result!=GIF_ERROR);
 
 
-        QImage zhen=frame.first.convertToFormat(
+        QImage zhen;
+
+        if(frame.first.format()==QImage::Format_RGB32){
+            zhen=frame.first.convertToFormat(
                     QImage::Format_Indexed8,colorTable);
-
-        qDebug()<<colorTable.size();
-
-        zhen.save("temp"+QString::number(zhenShu)+".bmp");
-
+        }else{
+            Q_ASSERT(frame.first.format()==QImage::Format_Mono);
+            zhen=frame.first.convertToFormat(QImage::Format_RGB32);
+            zhen=zhen.convertToFormat(QImage::Format_Indexed8,colorTable);
+        }
 
 
         for (int y = 0 ; y < gao_; y++) {
 
             Result=EGifPutLine(GifFile, zhen.scanLine(y), kuan_);
-
-            //QDebug dbg=qDebug();
-            for(int s=0;s<kuan_;++s){
-               // dbg<<*(zhen.scanLine(y)+s);
-            }
 
             Q_ASSERT(Result!=GIF_ERROR);
         }
