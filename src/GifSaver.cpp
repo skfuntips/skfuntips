@@ -177,13 +177,13 @@ QByteArray GifSaver::save(int haoMiao){
 
     Q_ASSERT(GifFile);
 
-    int Result=EGifPutScreenDesc(
+    int errCode=EGifPutScreenDesc(
             GifFile,
             kuan_, gao_, 1, 0,
             tiaoSeBan
             ) ;
 
-    Q_ASSERT(Result!=GIF_ERROR);
+    Q_ASSERT(errCode!=GIF_ERROR);
 
     bool chengGong=tianJiaXunHuan(GifFile);
 
@@ -210,12 +210,12 @@ QByteArray GifSaver::save(int haoMiao){
         EGifPutExtension(GifFile, GRAPHICS_EXT_FUNC_CODE, 4, ExtStr);
 
 
-        Result=EGifPutImageDesc(
+        errCode=EGifPutImageDesc(
                 GifFile,
                 0, 0, kuan_, gao_, false, NULL
                 ) ;
 
-        Q_ASSERT(Result!=GIF_ERROR);
+        Q_ASSERT(errCode!=GIF_ERROR);
 
 
         QImage zhen;
@@ -232,17 +232,17 @@ QByteArray GifSaver::save(int haoMiao){
 
         for (int y = 0 ; y < gao_; y++) {
 
-            Result=EGifPutLine(GifFile, zhen.scanLine(y), kuan_);
+            errCode=EGifPutLine(GifFile, zhen.scanLine(y), kuan_);
 
-            Q_ASSERT(Result!=GIF_ERROR);
+            Q_ASSERT(errCode!=GIF_ERROR);
         }
     }
 
-    Result=EGifCloseFile(GifFile);
+    errCode=EGifCloseFile(GifFile);
 
     Q_ASSERT(fanHui.size()>0);
 
-    Q_ASSERT(Result== GIF_OK); 
+    Q_ASSERT(errCode== GIF_OK);
 
     return fanHui;
 
